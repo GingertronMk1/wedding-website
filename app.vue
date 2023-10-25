@@ -1,6 +1,3 @@
-<script setup>
-// require('bootstrap')
-</script>
 <template>
   <div>
     <AppNav />

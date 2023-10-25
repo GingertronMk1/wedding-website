@@ -46,9 +46,9 @@ const itinerary = ref([
         <td v-for="(item, index) in itinerary" :key="index">
           <ul class="list-group list-group-flush">
             <li
-              class="list-group-item"
               v-for="(part, partIndex) in item.where"
               :key="partIndex"
+              class="list-group-item"
               v-text="part"
             />
           </ul>
