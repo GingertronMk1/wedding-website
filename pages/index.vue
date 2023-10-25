@@ -20,7 +20,7 @@ const itinerary = ref([
 <template>
   <div class="card">
     <div class="card-header">The Key Information</div>
-    <table class="table">
+    <table class="table mb-0">
       <thead>
         <tr>
           <th :width="`${col1Width}%`" scope="col"></th>
@@ -33,27 +33,30 @@ const itinerary = ref([
           />
         </tr>
       </thead>
-      <tr>
-        <th scope="row">When</th>
-        <td
-          v-for="(item, index) in itinerary"
-          :key="index"
-          v-text="new Date(item.when).toUTCString()"
-        />
-      </tr>
-      <tr>
-        <th scope="row">Where</th>
-        <td v-for="(item, index) in itinerary" :key="index">
-          <ul class="list-group list-group-flush">
-            <li
-              v-for="(part, partIndex) in item.where"
-              :key="partIndex"
-              class="list-group-item"
-              v-text="part"
-            />
-          </ul>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <th class="p-3" scope="row">When</th>
+          <td
+            v-for="(item, index) in itinerary"
+            :key="index"
+            v-text="new Date(item.when).toUTCString()"
+          />
+        </tr>
+        <tr>
+          <th class="p-3" scope="row">Where</th>
+          <td v-for="(item, index) in itinerary" :key="index">
+            <ul class="list-group list-group-flush">
+              <li
+                v-for="(part, partIndex) in item.where"
+                :key="partIndex"
+                class="list-group-item"
+                v-text="part"
+              />
+            </ul>
+          </td>
+        </tr>
+      </tbody>
     </table>
+    <div class="card-footer">We can't wait to see you there!</div>
   </div>
 </template>
