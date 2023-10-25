@@ -1,5 +1,11 @@
+<script setup>
+  // require('bootstrap')
+</script>
 <template>
   <div>
-    <NuxtWelcome />
+    <AppNav />
+    <main class="container pt-3">
+      <NuxtPage />
+    </main>
   </div>
 </template>
