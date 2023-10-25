@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 docker-compose up -d --build \
-  && docker-compose exec app npm install \
+  && ./bin/npm install \

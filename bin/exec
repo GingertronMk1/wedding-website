@@ -1,3 +1,9 @@
 #!/usr/bin/env sh
 
-docker-compose exec app $@
+echo "$@"
+if sh -c ": >/dev/tty" >/dev/null 2>/dev/null; then
+    docker-compose exec app "$@"
+else
+    echo "No TTY - running with -T"
+    docker-compose exec -T app "$@"
+fi
