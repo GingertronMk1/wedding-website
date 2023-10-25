@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-docker-compose build --no-cache
-docker-compose run --rm app npm install
-./bin/serve
+docker-compose up -d --build \
+  && docker-compose exec app npm install \
+  && ./bin/serve
