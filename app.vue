@@ -1,5 +1,5 @@
 <script setup>
-  // require('bootstrap')
+// require('bootstrap')
 </script>
 <template>
   <div>
