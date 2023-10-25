@@ -16,4 +16,4 @@ jobs:
       - name: Installing
         run: ./bin/install
       - name: Static analysis
-        run: ./bin/npm lint
+        run: ./bin/npm run lint
