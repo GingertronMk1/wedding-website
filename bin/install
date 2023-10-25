@@ -2,4 +2,3 @@
 
 docker-compose up -d --build \
   && docker-compose exec app npm install \
-  && ./bin/serve
