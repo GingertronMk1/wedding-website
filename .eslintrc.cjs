@@ -17,5 +17,6 @@ module.exports = {
   },
   globals: {
     defineNuxtPlugin: "readonly",
+    defineNuxtConfig: "readonly",
   },
 };
