@@ -7,6 +7,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
       return;
     }
 
+    window.localStorage.removeItem(localStorageItem);
+
     let enteredPw = "";
     while (enteredPw !== pw) {
       enteredPw = window.prompt("Please enter the password");
