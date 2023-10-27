@@ -1,9 +1,33 @@
+<script setup>
+import { ref } from "vue";
+const navItems = ref([
+  {
+    text: "Home",
+    to: "/",
+  },
+  {
+    text: "Locations",
+    children: [
+      {
+        text: "Ceremony",
+        to: "https://beestonparishchurch.com/",
+        newTab: true,
+      },
+      {
+        text: "Reception",
+        to: "https://www.swancarfarmcountryhouse.com/",
+        newTab: true,
+      },
+    ],
+  },
+]);
+</script>
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <NuxtLink class="navbar-brand" to="/">
         <font-awesome-icon :icon="['fas', 'ring']" />
-      </a>
+      </NuxtLink>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,29 +41,45 @@
       </button>
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+          <template v-for="(item, index) in navItems" :key="index">
+            <li
+              v-if="Array.isArray(item.children)"
+              :class="item.liClass ?? 'nav-item dropdown'"
             >
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                v-text="item.text"
+              />
+              <ul class="dropdown-menu">
+                <li
+                  v-for="(subItem, subIndex) in item.children"
+                  :key="subIndex"
+                >
+                  <NuxtLink
+                    class="dropdown-item"
+                    :to="subItem.to"
+                    :target="subItem.newTab ? '_blank' : null"
+                  >
+                    {{ subItem.text }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </li>
+            <li v-else :class="item.liClass ?? 'nav-item'">
+              <NuxtLink
+                :to="item.to"
+                :class="item.linkClass ?? 'nav-link'"
+                active-class="active"
+                :target="item.newTab ? '_blank' : null"
+              >
+                {{ item.text }}
+              </NuxtLink>
+            </li>
+          </template>
         </ul>
       </div>
     </div>
