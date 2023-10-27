@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint **/*.{js,cjs,vue}",
+    "lint": "eslint **/*.{js,cjs,vue} nuxt.config.ts",
     "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
