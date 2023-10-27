@@ -18,5 +18,7 @@ module.exports = {
   globals: {
     defineNuxtPlugin: "readonly",
     defineNuxtConfig: "readonly",
+    defineNuxtRouteMiddleware: "readonly",
+    abortNavigation: "readonly",
   },
 };
