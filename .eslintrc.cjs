@@ -20,5 +20,6 @@ module.exports = {
     defineNuxtConfig: "readonly",
     defineNuxtRouteMiddleware: "readonly",
     abortNavigation: "readonly",
+    queryContent: "readonly",
   },
 };
