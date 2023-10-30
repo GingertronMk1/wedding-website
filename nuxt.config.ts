@@ -9,5 +9,5 @@ export default defineNuxtConfig({
     "~/node_modules/bootstrap/dist/css/bootstrap.min.css",
     "@fortawesome/fontawesome-svg-core/styles.css",
   ],
-  modules: ["@nuxt/content"],
+  modules: ["@nuxt/content", "@nuxtjs/eslint-module"],
 });

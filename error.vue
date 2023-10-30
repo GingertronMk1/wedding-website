@@ -1,8 +1,10 @@
 <script setup>
 defineProps({
-  error: Object,
+  error: {
+    type: Object,
+    required: true,
+  },
 });
-
 </script>
 
 <template>

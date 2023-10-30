@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     "standard",
     "plugin:vue/vue3-recommended",
+    "plugin:nuxt/recommended",
     "plugin:prettier/recommended",
   ],
   parserOptions: {
