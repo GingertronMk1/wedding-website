@@ -13,7 +13,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
     while (enteredPw !== pw) {
       enteredPw = window.prompt("Please enter the password");
       if (enteredPw === null) {
-        window.close();
+        throw createError({
+          statusCode: 403,
+        });
       }
     }
     window.localStorage.setItem(localStorageItem, btoa(enteredPw));

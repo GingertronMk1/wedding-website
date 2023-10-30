@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from "vue";
+
 const { events } = await queryContent("/running-order").findOne();
 
 const computedEvents = computed(() => {
