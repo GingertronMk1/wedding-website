@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for jack-and-izzys-wedding on 2023-10-24T18:54:43+01:00
+# fly.toml app configuration file generated for izzy-and-jacks-wedding on 2023-10-31T20:11:58Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "jack-and-izzys-wedding"
+app = "izzy-and-jacks-wedding"
 kill_signal = "SIGINT"
 kill_timeout = 5
 mounts = []
