@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-docker-compose up -d \
-  && ./bin/serve \
-  && docker-compose stop
+docker-compose up

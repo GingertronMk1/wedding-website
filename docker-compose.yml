@@ -14,7 +14,7 @@ services:
           - "24678:24678"
         networks:
           - app-network
-        command: tail -f /dev/null
+        entrypoint: bash -c "npm install && npm run dev"
 
 networks:
     app-network:
