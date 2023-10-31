@@ -14,7 +14,7 @@ services:
           - "24678:24678"
         networks:
           - app-network
-        entrypoint: bash -c "npm install && npm run dev"
+        entrypoint: tail -f /dev/null
 
 networks:
     app-network:

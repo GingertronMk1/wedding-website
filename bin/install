@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-docker-compose build \
-  && docker-compose run app npm install \
-  && ./bin/start -d
+docker-compose down -v \
+  && docker-compose up -d --build \
+  && ./bin/npm install
