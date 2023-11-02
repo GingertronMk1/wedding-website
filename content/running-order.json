@@ -1,0 +1,105 @@
+{
+  "dates": [
+    {
+      "date": "2023-04-20",
+      "events": [
+        {
+          "name": "Jack proposed",
+          "time": "19:30:00"
+        }
+      ]
+    },
+    {
+      "date": "2023-11-16",
+      "events": [
+        {
+          "name": "Tasting evening at Swancar",
+          "time": "18:30:00"
+        }
+      ]
+    },
+    {
+      "date": "2024-09-22",
+      "events": [
+        {
+          "name": "Planning meeting at Swancar",
+          "time": "14:00:00",
+          "day": -31
+        },
+        {
+          "name": "Bridal party hair and makeup",
+          "time": "07:00:00"
+        },
+        {
+          "name": "Decamp from stables",
+          "time": "10:00:00"
+        },
+        {
+          "name": "Bridal party ready",
+          "time": "12:00:00"
+        },
+        {
+          "name": "Groomsmen at church",
+          "time": "12:30:00"
+        },
+        {
+          "name": "Ceremony",
+          "time": "13:00:00"
+        },
+        {
+          "name": "Confetti photos",
+          "time": "14:00:00"
+        },
+        {
+          "name": "Drinks reception/photos",
+          "time": "14:30:00"
+        },
+        {
+          "name": "Seating for wedding breakfast",
+          "time": "16:00:00"
+        },
+        {
+          "name": "Izzy's Parents' Speech",
+          "time": "16:15:00"
+        },
+        {
+          "name": "Wedding Breakfast",
+          "time": "16:30:00"
+        },
+        {
+          "name": "Coffee and Cake",
+          "time": "18:30:00"
+        },
+        {
+          "name": "Speeches 2: Glass Barn Boogaloo",
+          "time": "18:45:00"
+        },
+        {
+          "name": "Cocktails",
+          "time": "19:30:00"
+        },
+        {
+          "name": "Dancing",
+          "time": "20:00:00"
+        },
+        {
+          "name": "Cake cutting and evening food",
+          "time": "21:00:00"
+        },
+        {
+          "name": "Last Orders",
+          "time": "23:30:00"
+        }
+      ]
+    },
+    {
+      "date": "2024-09-23",
+      "events": [
+        {
+          "name": "Carriages",
+          "time": "00:00:00"
+        }
+      ]
+    }
+  ]
+}

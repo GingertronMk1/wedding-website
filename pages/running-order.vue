@@ -1,48 +1,67 @@
-<script setup>
+<script setup lang="ts">
+import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
 import { computed, ref } from "vue";
 
-const { events } = await queryContent("/running-order").findOne();
+type Event = {
+  name: string;
+  time: string;
+};
 
-const computedEvents = computed(() => {
-  if (!Array.isArray(events)) {
-    return [];
+type EventDay = {
+  date: string;
+  events: Array<Event>;
+};
+
+interface EventsParsedContent extends ParsedContent {
+  dates: Array<EventDay>;
+}
+
+type ComputedEvent = Event & { computedDateTime: Date };
+
+const data =
+  await queryContent<EventsParsedContent>("/running-order").findOne();
+
+const { dates }: { dates: Array<EventDay> } = data;
+
+console.table(dates);
+
+const computedEvents = computed<Array<ComputedEvent>>(() => {
+  const allEvents = [];
+  for (const { date, events } of dates) {
+    for (const event of events) {
+      const computedDateTime = new Date(`${date}T${event.time}`);
+      allEvents.push({
+        ...event,
+        computedDateTime,
+      });
+    }
   }
-  return events.map((val) => {
-    const todayDate = new Date().toISOString().split("T")[0];
-    const computedTime = new Date(`${todayDate}T${val.time}`);
-    return {
-      ...val,
-      computedTime,
-    };
-  });
+  return allEvents;
 });
 
-const currentEvent = ref(null);
-const futureEvent = ref(null);
-const countdownToNextEvent = ref(0);
+const currentEvent = ref<null | ComputedEvent>(null);
+const futureEvent = ref<null | ComputedEvent>(null);
+const countdownToNextEvent = ref<number>(0);
 
 setInterval(() => {
   const now = new Date();
   const ce = computedEvents.value;
-  if (typeof ce !== "object") {
-    return;
-  }
   for (const eventKeyStr in ce) {
     const eventKey = parseInt(eventKeyStr);
     const thisEvent = ce[eventKey];
     const nextEvent = ce[eventKey + 1] ?? false;
-    if (thisEvent.computedTime <= now) {
+    if (thisEvent.computedDateTime <= now) {
       if (!nextEvent) {
         currentEvent.value = thisEvent;
         futureEvent.value = null;
         countdownToNextEvent.value = -1;
         return;
       }
-      if (nextEvent.computedTime > now) {
+      if (nextEvent.computedDateTime > now) {
         currentEvent.value = thisEvent;
         futureEvent.value = nextEvent;
         countdownToNextEvent.value = Math.round(
-          (nextEvent.computedTime - now) / 1000,
+          (nextEvent.computedDateTime.getTime() - now.getTime()) / 1000,
         );
         return;
       }
@@ -67,11 +86,11 @@ const countdownToNextEventObj = computed(() => {
 <template>
   <h1 v-if="currentEvent">
     Now: {{ currentEvent.name }}, at
-    {{ currentEvent.computedTime.toLocaleTimeString() }}
+    {{ currentEvent.computedDateTime.toLocaleTimeString() }}
   </h1>
   <h1 v-if="futureEvent">
     Next: {{ futureEvent.name }}, at
-    {{ futureEvent.computedTime.toLocaleTimeString() }}
+    {{ futureEvent.computedDateTime.toLocaleTimeString() }}
   </h1>
 
   <h1 v-if="countdownToNextEventObj">
@@ -101,7 +120,7 @@ const countdownToNextEventObj = computed(() => {
       v-text="`${countdownToNextEventObj.s} seconds`"
     />
   </h1>
-  <table v-if="events" class="table">
+  <table v-if="computedEvents" class="table">
     <thead>
       <tr>
         <th scope="col">When</th>
@@ -110,7 +129,7 @@ const countdownToNextEventObj = computed(() => {
     </thead>
     <tbody>
       <tr v-for="(thing, index) in computedEvents" :key="index">
-        <td v-text="thing.computedTime.toLocaleTimeString()" />
+        <td v-text="thing.computedDateTime.toLocaleString()" />
         <td v-text="thing.name" />
       </tr>
     </tbody>

@@ -1,4 +1,4 @@
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(() => {
   if (typeof window !== "undefined") {
     const localStorageItem = "ji-wedding-pw";
     const pw = "boat party";

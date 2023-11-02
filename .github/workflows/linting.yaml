@@ -17,3 +17,5 @@ jobs:
         run: ./bin/install
       - name: Static analysis
         run: ./bin/npm run lint
+      - name: Type-Testing
+        run: ./bin/exec npx nuxi typecheck

@@ -17,4 +17,7 @@ export default defineNuxtConfig({
     "@fortawesome/fontawesome-svg-core/styles.css",
   ],
   modules: ["@nuxt/content", "@nuxtjs/eslint-module"],
+  typescript: {
+    typeCheck: true,
+  },
 });
