@@ -46,24 +46,31 @@ const countdownToNextEvent = ref<number>(0);
 setInterval(() => {
   const now = new Date();
   const ce = computedEvents.value;
+  if (
+    ce.every(({ computedDateTime }) => computedDateTime.getTime() > Date.now())
+  ) {
+    const nextEvent = ce[0];
+    futureEvent.value = nextEvent;
+    countdownToNextEvent.value = Math.round(
+      (nextEvent.computedDateTime.getTime() - now.getTime()) / 1000,
+    );
+    return;
+  }
   for (const eventKeyStr in ce) {
     const eventKey = parseInt(eventKeyStr);
     const thisEvent = ce[eventKey];
     const nextEvent = ce[eventKey + 1] ?? false;
     if (thisEvent.computedDateTime <= now) {
+      currentEvent.value = thisEvent;
       if (!nextEvent) {
-        currentEvent.value = thisEvent;
         futureEvent.value = null;
         countdownToNextEvent.value = -1;
-        return;
-      }
-      if (nextEvent.computedDateTime > now) {
+      } else if (nextEvent.computedDateTime > now) {
         currentEvent.value = thisEvent;
         futureEvent.value = nextEvent;
         countdownToNextEvent.value = Math.round(
           (nextEvent.computedDateTime.getTime() - now.getTime()) / 1000,
         );
-        return;
       }
     }
   }
@@ -73,10 +80,14 @@ const countdownToNextEventObj = computed(() => {
   if (!countdownToNextEvent.value) {
     return null;
   }
-  const h = Math.floor(countdownToNextEvent.value / 3600);
-  const m = Math.floor((countdownToNextEvent.value - h * 3600) / 60);
-  const s = countdownToNextEvent.value - h * 3600 - m * 60;
+  const d = Math.floor(countdownToNextEvent.value / 86400);
+  const h = Math.floor((countdownToNextEvent.value - d * 86400) / 3600);
+  const m = Math.floor(
+    (countdownToNextEvent.value - d * 86400 - h * 3600) / 60,
+  );
+  const s = countdownToNextEvent.value - d * 86400 - h * 3600 - m * 60;
   return {
+    d,
     h,
     m,
     s,
@@ -95,6 +106,14 @@ const countdownToNextEventObj = computed(() => {
 
   <h1 v-if="countdownToNextEventObj">
     In
+    <span
+      v-if="countdownToNextEventObj.d === 1"
+      v-text="`${countdownToNextEventObj.d} day, `"
+    />
+    <span
+      v-else-if="countdownToNextEventObj.d > 1"
+      v-text="`${countdownToNextEventObj.d} days, `"
+    />
     <span
       v-if="countdownToNextEventObj.h === 1"
       v-text="`${countdownToNextEventObj.h} hour, `"
