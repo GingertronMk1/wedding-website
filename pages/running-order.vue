@@ -16,7 +16,7 @@ interface EventsParsedContent extends ParsedContent {
   dates: Array<EventDay>;
 }
 
-type ComputedEvent = Event & { computedDateTime: Date };
+type ComputedEvent = Event & { computedDateTime: Date; id: number };
 
 const data =
   await queryContent<EventsParsedContent>("/running-order").findOne();
@@ -27,12 +27,14 @@ console.table(dates);
 
 const computedEvents = computed<Array<ComputedEvent>>(() => {
   const allEvents = [];
+  let i = 0;
   for (const { date, events } of dates) {
     for (const event of events) {
       const computedDateTime = new Date(`${date}T${event.time}`);
       allEvents.push({
         ...event,
         computedDateTime,
+        id: i++,
       });
     }
   }
@@ -102,28 +104,47 @@ const countdownToNextEventObj = computed(() => {
   });
   return strArr.join(", ");
 });
+
+const futureEventStr = computed<string | boolean>(() => {
+  const futureEventVal = futureEvent.value;
+  if (!futureEventVal) {
+    return false;
+  }
+  const futureEventDate = futureEventVal.computedDateTime;
+  const dateStr =
+    futureEventDate.toDateString() === new Date().toDateString()
+      ? `at ${futureEventDate.toLocaleTimeString()}`
+      : `on ${futureEventDate.toDateString()}, at ${futureEventDate.toLocaleTimeString()}`;
+
+  return `Next: ${futureEventVal.name}, ${dateStr}`;
+});
 </script>
 <template>
-  <h1 v-if="currentEvent">
-    Now: {{ currentEvent.name }}, at
-    {{ currentEvent.computedDateTime.toLocaleTimeString() }}
-  </h1>
-  <h1 v-if="futureEvent">
-    Next: {{ futureEvent.name }}, at
-    {{ futureEvent.computedDateTime.toLocaleTimeString() }}
-  </h1>
-
+  <h1 v-if="currentEvent" v-text="`Now: ${currentEvent.name}`" />
+  <h1 v-if="futureEventStr" v-text="futureEventStr" />
   <h1 v-if="countdownToNextEventObj" v-text="`In ${countdownToNextEventObj}`" />
   <table v-if="computedEvents" class="table">
     <thead>
       <tr>
-        <th scope="col">When</th>
-        <th scope="col">What</th>
+        <th scope="col">Happening</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col" class="w-50">What</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="(thing, index) in computedEvents" :key="index">
-        <td v-text="thing.computedDateTime.toLocaleString()" />
+        <td
+          v-text="
+            thing.id === currentEvent?.id
+              ? 'Now'
+              : thing.id === futureEvent?.id
+              ? 'Next'
+              : ''
+          "
+        />
+        <td v-text="thing.computedDateTime.toLocaleDateString()" />
+        <td v-text="thing.computedDateTime.toLocaleTimeString()" />
         <td v-text="thing.name" />
       </tr>
     </tbody>
