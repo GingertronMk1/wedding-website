@@ -80,18 +80,27 @@ const countdownToNextEventObj = computed(() => {
   if (!countdownToNextEvent.value) {
     return null;
   }
-  const d = Math.floor(countdownToNextEvent.value / 86400);
-  const h = Math.floor((countdownToNextEvent.value - d * 86400) / 3600);
-  const m = Math.floor(
+  const d: number = Math.floor(countdownToNextEvent.value / 86400);
+  const h: number = Math.floor((countdownToNextEvent.value - d * 86400) / 3600);
+  const m: number = Math.floor(
     (countdownToNextEvent.value - d * 86400 - h * 3600) / 60,
   );
-  const s = countdownToNextEvent.value - d * 86400 - h * 3600 - m * 60;
-  return {
-    d,
-    h,
-    m,
-    s,
+  const s: number = countdownToNextEvent.value - d * 86400 - h * 3600 - m * 60;
+  const strArr: Array<string> = [];
+  const timeObj = {
+    day: d,
+    hour: h,
+    minute: m,
+    second: s,
   };
+  Object.entries(timeObj).forEach(([key, value]) => {
+    if (value === 1) {
+      strArr.push(`${value} ${key}`);
+    } else if (value > 0) {
+      strArr.push(`${value} ${key}s`);
+    }
+  });
+  return strArr.join(", ");
 });
 </script>
 <template>
@@ -104,41 +113,7 @@ const countdownToNextEventObj = computed(() => {
     {{ futureEvent.computedDateTime.toLocaleTimeString() }}
   </h1>
 
-  <h1 v-if="countdownToNextEventObj">
-    In
-    <span
-      v-if="countdownToNextEventObj.d === 1"
-      v-text="`${countdownToNextEventObj.d} day, `"
-    />
-    <span
-      v-else-if="countdownToNextEventObj.d > 1"
-      v-text="`${countdownToNextEventObj.d} days, `"
-    />
-    <span
-      v-if="countdownToNextEventObj.h === 1"
-      v-text="`${countdownToNextEventObj.h} hour, `"
-    />
-    <span
-      v-else-if="countdownToNextEventObj.h > 1"
-      v-text="`${countdownToNextEventObj.h} hours, `"
-    />
-    <span
-      v-if="countdownToNextEventObj.m === 1"
-      v-text="`${countdownToNextEventObj.m} minute, `"
-    />
-    <span
-      v-else-if="countdownToNextEventObj.m > 1"
-      v-text="`${countdownToNextEventObj.m} minutes, `"
-    />
-    <span
-      v-if="countdownToNextEventObj.s === 1"
-      v-text="`${countdownToNextEventObj.s} second`"
-    />
-    <span
-      v-else-if="countdownToNextEventObj.s > 1"
-      v-text="`${countdownToNextEventObj.s} seconds`"
-    />
-  </h1>
+  <h1 v-if="countdownToNextEventObj" v-text="`In ${countdownToNextEventObj}`" />
   <table v-if="computedEvents" class="table">
     <thead>
       <tr>
