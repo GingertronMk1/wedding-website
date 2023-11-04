@@ -1,17 +1,12 @@
 {
-  "dates": [
-    {
-      "date": "2023-11-16",
-      "events": [
+  "dates": {
+    "2023-11-16": [
         {
           "name": "Tasting evening at Swancar",
           "time": "18:30:00"
         }
-      ]
-    },
-    {
-      "date": "2024-09-22",
-      "events": [
+    ],
+    "2024-09-22": [
         {
           "name": "Planning meeting at Swancar",
           "time": "14:00:00"
@@ -80,16 +75,12 @@
           "name": "Last Orders",
           "time": "23:30:00"
         }
-      ]
-    },
-    {
-      "date": "2024-09-23",
-      "events": [
+    ],
+    "2024-09-23": [
         {
           "name": "Carriages",
           "time": "00:00:00"
         }
       ]
     }
-  ]
 }

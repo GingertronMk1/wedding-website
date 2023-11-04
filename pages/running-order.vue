@@ -7,13 +7,10 @@ type Event = {
   time: string;
 };
 
-type EventDay = {
-  date: string;
-  events: Array<Event>;
-};
+type EventDays = Record<string, Array<Event>>;
 
 interface EventsParsedContent extends ParsedContent {
-  dates: Array<EventDay>;
+  dates: EventDays;
 }
 
 type ComputedEvent = Event & { computedDateTime: Date; id: number };
@@ -21,14 +18,14 @@ type ComputedEvent = Event & { computedDateTime: Date; id: number };
 const data =
   await queryContent<EventsParsedContent>("/running-order").findOne();
 
-const { dates }: { dates: Array<EventDay> } = data;
+const { dates }: { dates: EventDays } = data;
 
 console.table(dates);
 
 const computedEvents = computed<Array<ComputedEvent>>(() => {
   const allEvents = [];
   let i = 0;
-  for (const { date, events } of dates) {
+  for (const [date, events] of Object.entries(dates)) {
     for (const event of events) {
       const computedDateTime = new Date(`${date}T${event.time}`);
       allEvents.push({
