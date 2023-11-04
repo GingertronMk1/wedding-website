@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+
+./bin/npm run lint:fix
+./bin/exec npx nuxi typecheck
