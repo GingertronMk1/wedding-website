@@ -30,7 +30,7 @@
     "typescript": "^5.3.2",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5",
-    "vue-tsc": "^1.8.24"
+    "vue-tsc": "^1.8.25"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
