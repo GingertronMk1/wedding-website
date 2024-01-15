@@ -1,1 +1,13 @@
-// @import 'bootstrap/scss/bootstrap';
+html,
+body,
+#__nuxt,
+#__nuxt > *,
+main {
+  height: 100%;
+}
+body {
+  background-image: url('/img/background.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat-y;
+}
