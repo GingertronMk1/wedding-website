@@ -127,8 +127,12 @@ const style = [
   },
 ];
 
+const apiKey = publicConfig.mapsApiKey;
+
+console.table(JSON.parse(JSON.stringify(publicConfig)));
+
 const loader = new mapsLoader.Loader({
-  apiKey: publicConfig.mapsApiKey,
+  apiKey,
   version: "weekly",
 });
 
