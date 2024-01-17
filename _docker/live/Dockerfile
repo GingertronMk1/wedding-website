@@ -20,18 +20,17 @@ RUN apt-get update -qq && \
     apt-get install -y python-is-python3 pkg-config build-essential 
 
 # Install node modules
-COPY --link package.json package-lock.json .
+COPY --link package.json package-lock.json ./
 RUN npm install --production=false
-
-# Note: You can mount multiple secrets
-RUN --mount=type=secret,id=GOOGLE_MAPS_API_KEY \
-    GOOGLE_MAPS_API_KEY="$(cat /run/secrets/GOOGLE_MAPS_API_KEY)"
 
 # Copy application code
 COPY --link . .
 
 # Build application
-RUN npm run build
+RUN --mount=type=secret,id=GOOGLE_MAPS_API_KEY \
+    GOOGLE_MAPS_API_KEY="$(cat /run/secrets/GOOGLE_MAPS_API_KEY)" \
+    npm run build
+
 
 # Remove development dependencies
 RUN npm prune --production
