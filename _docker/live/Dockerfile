@@ -26,14 +26,11 @@ RUN npm install --production=false
 # Copy application code
 COPY --link . .
 
-# Build application
+# Build application, then remove dependencies
 RUN --mount=type=secret,id=GOOGLE_MAPS_API_KEY \
     GOOGLE_MAPS_API_KEY="$(cat /run/secrets/GOOGLE_MAPS_API_KEY)" \
-    npm run build
-
-
-# Remove development dependencies
-RUN npm prune --production
+    npm run build \
+    && npm prune --production
 
 # Final stage for app image
 FROM base
