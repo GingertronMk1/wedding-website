@@ -2,7 +2,7 @@
   <div>
     <client-only>
       <AppNav />
-      <main class="container pt-3">
+      <main class="container py-3">
         <NuxtPage />
       </main>
     </client-only>

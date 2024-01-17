@@ -184,5 +184,5 @@ loader.load().then(async () => {
 });
 </script>
 <template>
-  <div id="map"></div>
+  <div id="map" class="h-100"></div>
 </template>
