@@ -139,8 +139,8 @@ const futureEventStr = computed<string | boolean>(() => {
             thing.id === currentEvent?.id
               ? 'Now'
               : thing.id === futureEvent?.id
-              ? 'Next'
-              : ''
+                ? 'Next'
+                : ''
           "
         />
         <td v-text="thing.computedDateTime.toLocaleDateString()" />
