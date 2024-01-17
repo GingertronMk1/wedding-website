@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-docker-compose build --no-cache
-./bin/npm install
+docker-compose up -d \
+&& ./bin/npm install
