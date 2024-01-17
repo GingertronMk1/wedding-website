@@ -1,5 +1,5 @@
 <script setup>
-import { Loader } from "@googlemaps/js-api-loader";
+import * as mapsLoader from "@googlemaps/js-api-loader";
 const { public: publicConfig } = useRuntimeConfig();
 
 console.log(publicConfig.mapsApiKey);
@@ -129,16 +129,16 @@ const style = [
   },
 ];
 
-const loader = new Loader({
+const loader = new mapsLoader.Loader({
   apiKey: publicConfig.mapsApiKey,
   version: "weekly",
 });
 
 loader.load().then(async () => {
-  const { Map } = await google.maps.importLibrary("maps");
-  const { Marker } = await google.maps.importLibrary("marker");
+  const mapsLibrary = await google.maps.importLibrary("maps");
+  const markerLibrary = await google.maps.importLibrary("marker");
 
-  const map = new Map(document.getElementById("map"), {
+  const map = new mapsLibrary.Map(document.getElementById("map"), {
     zoom: 14,
     styles: style,
     center: { lat: 52.937427, lng: -1.237924 },
@@ -157,7 +157,7 @@ loader.load().then(async () => {
 
   features.forEach(function ({ position, title }) {
     // eslint-disable-next-line no-new
-    new Marker({
+    new markerLibrary.Marker({
       map,
       position,
       title,
