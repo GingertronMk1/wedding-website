@@ -30,7 +30,10 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    environment: Fly
+    env:
+      SUPER_SECRET: ${{ secrets.SuperSecret }}
+    run: |
+      example-command "$SUPER_SECRET"
     steps:
       - uses: actions/checkout@v3
       - name: Cache Node Modules
@@ -40,6 +43,7 @@ jobs:
           path: node_modules
           key: ${{ hashFiles('package-lock.json') }}
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+      - run: flyctl deploy --remote-only --build_secret GOOGLE_MAPS_API_KEY="$GOOGLE_MAPS_API_KEY"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
