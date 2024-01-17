@@ -24,6 +24,10 @@ const navItems = ref([
       },
     ],
   },
+  {
+    text: "Map",
+    to: "/map",
+  },
 ]);
 </script>
 <template>

@@ -28,5 +28,6 @@ module.exports = {
     abortNavigation: "readonly",
     queryContent: "readonly",
     createError: "readonly",
+    useRuntimeConfig: "readonly",
   },
 };

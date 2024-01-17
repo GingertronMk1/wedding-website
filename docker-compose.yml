@@ -14,7 +14,6 @@ services:
           - "24678:24678"
         networks:
           - app-network
-        entrypoint: tail -f /dev/null
 
 networks:
     app-network:

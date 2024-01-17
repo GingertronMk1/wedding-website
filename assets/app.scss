@@ -8,6 +8,6 @@ main {
 body {
   background-image: url('/img/background.png');
   background-position: center;
-  background-size: contain;
+  background-size: 100% auto;
   background-repeat: repeat-y;
 }
