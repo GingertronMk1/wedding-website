@@ -25,3 +25,15 @@ jobs:
         run: ./bin/npm run lint
       - name: Type-Testing
         run: ./bin/exec npx nuxi typecheck
+  deploy:
+    name: Deploy app
+    needs: lint
+    runs-on: ubuntu-latest
+    if: ${{ github.event == 'push' && github.ref == 'refs/heads/main' }}
+    environment: Fly
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
