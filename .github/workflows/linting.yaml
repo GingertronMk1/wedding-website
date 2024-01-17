@@ -27,12 +27,18 @@ jobs:
         run: ./bin/exec npx nuxi typecheck
   deploy:
     name: Deploy app
-    # needs: lint
+    needs: lint
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     environment: Fly
     steps:
       - uses: actions/checkout@v3
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ hashFiles('package-lock.json') }}
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
         env:
