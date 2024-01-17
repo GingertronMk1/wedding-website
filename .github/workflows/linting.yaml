@@ -27,8 +27,9 @@ jobs:
         run: ./bin/exec npx nuxi typecheck
   deploy:
     name: Deploy app
+    # needs: lint
     runs-on: ubuntu-latest
-    if: ${{ github.event == 'push' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     environment: Fly
     steps:
       - uses: actions/checkout@v3
