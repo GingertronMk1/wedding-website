@@ -25,7 +25,7 @@ RUN npm install --production=false
 
 # Note: You can mount multiple secrets
 RUN --mount=type=secret,id=GOOGLE_MAPS_API_KEY \
-    GOOGLE_MAPS_API_KEY="$(cat /run/secrets/GOOGLE_MAPS_API_KEY)" some_command
+    GOOGLE_MAPS_API_KEY="$(cat /run/secrets/GOOGLE_MAPS_API_KEY)"
 
 # Copy application code
 COPY --link . .
