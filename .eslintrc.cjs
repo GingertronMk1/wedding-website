@@ -29,6 +29,6 @@ module.exports = {
     queryContent: "readonly",
     createError: "readonly",
     useRuntimeConfig: "readonly",
-    google: "readonly"
+    google: "readonly",
   },
 };
