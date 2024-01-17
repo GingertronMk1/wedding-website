@@ -2,8 +2,6 @@
 import * as mapsLoader from "@googlemaps/js-api-loader";
 const { public: publicConfig } = useRuntimeConfig();
 
-console.log(publicConfig.mapsApiKey);
-
 const style = [
   {
     elementType: "labels",
