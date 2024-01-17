@@ -1,26 +1,170 @@
 <script setup>
-import { ref } from "vue";
+import { Loader } from "@googlemaps/js-api-loader";
 const { public: publicConfig } = useRuntimeConfig();
-const params = {
-  key: publicConfig.mapsApiKey,
-  // 'q': 'Beeston+Methodist+Church',
-  center: "52.9232775,-1.2168948",
-  zoom: 18,
-};
-const paramsObj = new URLSearchParams(params);
-const mapMode = "view";
-const url = ref(
-  `https://www.google.com/maps/embed/v1/${mapMode}?${paramsObj.toString()}`,
-);
+
+console.log(publicConfig.mapsApiKey);
+
+const style = [
+  {
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "administrative.land_parcel",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "administrative.land_parcel",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#b4dfc0",
+      },
+    ],
+  },
+  {
+    featureType: "administrative.neighborhood",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "landscape.man_made",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#f0e6b2",
+      },
+    ],
+  },
+  {
+    featureType: "landscape.natural",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#a4dba7",
+      },
+    ],
+  },
+  {
+    featureType: "poi.government",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#b4dfc0",
+      },
+    ],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#b4dfc0",
+      },
+    ],
+  },
+  {
+    featureType: "poi.school",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#b4dfc0",
+      },
+    ],
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#eeba72",
+      },
+    ],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        color: "#eeba72",
+      },
+    ],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "road.local",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+];
+
+const loader = new Loader({
+  apiKey: publicConfig.mapsApiKey,
+  version: "weekly",
+});
+
+loader.load().then(async () => {
+  const { Map } = await google.maps.importLibrary("maps");
+  const { Marker } = await google.maps.importLibrary("marker");
+
+  const map = new Map(document.getElementById("map"), {
+    zoom: 14,
+    styles: style,
+    center: { lat: 52.937427, lng: -1.237924 },
+  });
+
+  const features = [
+    {
+      position: { lat: 52.925165, lng: -1.2167877 },
+      title: "The Church",
+    },
+    {
+      position: { lat: 52.9494427, lng: -1.2674081 },
+      title: "Reception Venue",
+    },
+  ];
+
+  features.forEach(function ({ position, title }) {
+    // eslint-disable-next-line no-new
+    new Marker({
+      map,
+      position,
+      title,
+    });
+  });
+});
 </script>
 <template>
-  <iframe
-    width="600"
-    height="450"
-    style="border: 0"
-    loading="lazy"
-    allowfullscreen
-    referrerpolicy="no-referrer-when-downgrade"
-    :src="url"
-  />
+  <div id="map"></div>
 </template>
