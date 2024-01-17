@@ -1,4 +1,4 @@
-name: Testing
+name: Testing and Deployment
 on:
   push:
     branches:
