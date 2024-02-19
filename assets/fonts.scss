@@ -1,0 +1,26 @@
+$amsterdams: 'AmsterdamOne', 'AmsterdamTwo', 'AmsterdamThree', 'AmsterdamFour';
+@each $amsterdam in $amsterdams {
+  @font-face {
+    font-family: $amsterdam;
+    src: url('/fonts/Amsterdam/#{$amsterdam}.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: $amsterdam;
+    src: url('/fonts/Amsterdam/#{$amsterdam}Slant.ttf') format('truetype');
+    font-style: italic;
+  }
+}
+
+$fraunceses: 'Fraunces';
+@each $fraunces in $fraunceses {
+  @font-face {
+    font-family: $fraunces;
+    src: url('/fonts/Fraunces/#{$fraunces}.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: $fraunces;
+    src: url('/fonts/Fraunces/#{$fraunces}-Italic.ttf') format('truetype');
+    font-style: italic;
+  }
+}
+
