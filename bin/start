@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
-./bin/npm install \
+docker-compose up -d \
+&& ./bin/npm install \
 && ./bin/npm run dev
