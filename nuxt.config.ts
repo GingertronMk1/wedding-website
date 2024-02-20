@@ -22,7 +22,15 @@ export default defineNuxtConfig({
     "@fortawesome/fontawesome-svg-core/styles.css",
     "~/assets/app.scss",
   ],
-  modules: ["@nuxt/content", "@nuxtjs/eslint-module"],
+  modules: [
+    "@nuxt/content",
+    [
+      "@nuxtjs/eslint-module",
+      {
+        fix: true,
+      },
+    ],
+  ],
   typescript: {
     typeCheck: true,
   },

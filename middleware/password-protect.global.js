@@ -3,6 +3,11 @@ export default defineNuxtRouteMiddleware(() => {
     const localStorageItem = "ji-wedding-pw";
     const pw = "boat party";
     const hasEntered = window.localStorage.getItem(localStorageItem);
+
+    if (window.location.hash === "#invitation-link") {
+      window.localStorage.setItem(localStorageItem, btoa(pw));
+      return;
+    }
     if (hasEntered !== null && atob(hasEntered) === pw) {
       return;
     }
