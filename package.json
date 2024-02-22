@@ -41,6 +41,6 @@
     "@googlemaps/js-api-loader": "^1.16.6",
     "@nuxt/content": "^2.12.0",
     "bootstrap": "^5.3.3",
-    "sass": "^1.71.0"
+    "sass": "^1.71.1"
   }
 }
