@@ -11,6 +11,8 @@ const colClasses = [
 interface Form {
   text: string;
   iframeSrc: string;
+  endDate?: number;
+  expiryText?: string;
 }
 
 const forms: Array<Form> = [
@@ -18,6 +20,9 @@ const forms: Array<Form> = [
     text: "I am a Day Guest",
     iframeSrc:
       "https://docs.google.com/forms/d/e/1FAIpQLSceOkwlfbMtH6RYc4xY04KOkmiZrvfcS0HsT1n7WH-cmvipcg/viewform?embedded=true",
+    endDate: Date.parse("2024-07-16 00:00:00"),
+    expiryText:
+      "Unfortunately you've missed the deadline for day guest RSVPs. We'd still love to have you as an evening guest though, so please fill out the below RSVP.",
   },
   {
     text: "I am an Evening Guest",
@@ -26,7 +31,6 @@ const forms: Array<Form> = [
   },
 ];
 
-const rsvpEndDateMs = Date.parse("2024-07-16 00:00:00");
 const currentDate = Date.now();
 </script>
 <template>
@@ -37,7 +41,7 @@ const currentDate = Date.now();
   </p>
   <div class="row flex-grow-1">
     <div :class="colClasses">
-      <div v-if="currentDate < rsvpEndDateMs" class="accordion w-100">
+      <div class="accordion w-100">
         <div v-for="(item, index) in forms" :key="index" class="accordion-item">
           <h2 :id="`heading${index}`" class="accordion-header">
             <button
@@ -58,6 +62,7 @@ const currentDate = Date.now();
           >
             <div class="accordion-body">
               <iframe
+                v-if="item.endDate && item.endDate > currentDate"
                 :src="item.iframeSrc"
                 width="640"
                 height="767"
@@ -67,11 +72,11 @@ const currentDate = Date.now();
                 class="w-100"
                 >Loading…</iframe
               >
+              <div v-else v-text="item.expiryText" />
             </div>
           </div>
         </div>
       </div>
-      <template v-else> Too late! </template>
     </div>
     <div :class="colClasses">
       <a
