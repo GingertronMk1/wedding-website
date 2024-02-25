@@ -28,6 +28,10 @@ const navItems = ref([
     text: "Map",
     to: "/map",
   },
+  {
+    text: "Accommodation",
+    to: "/accommodation",
+  },
 ]);
 </script>
 <template>
