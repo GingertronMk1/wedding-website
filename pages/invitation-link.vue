@@ -25,6 +25,9 @@ const forms: Array<Form> = [
       "https://docs.google.com/forms/d/e/1FAIpQLSch57b-fCS-YGSqk0a7caLy3Mg2oUCF4PKlo20kq_rznw84hg/viewform?embedded=true",
   },
 ];
+
+const rsvpEndDateMs = Date.parse("2024-07-16 00:00:00");
+const currentDate = Date.now();
 </script>
 <template>
   <h3>You got our invitation! Hooray!</h3>
@@ -34,7 +37,7 @@ const forms: Array<Form> = [
   </p>
   <div class="row flex-grow-1">
     <div :class="colClasses">
-      <div class="accordion w-100">
+      <div v-if="currentDate < rsvpEndDateMs" class="accordion w-100">
         <div v-for="(item, index) in forms" :key="index" class="accordion-item">
           <h2 :id="`heading${index}`" class="accordion-header">
             <button
@@ -68,6 +71,7 @@ const forms: Array<Form> = [
           </div>
         </div>
       </div>
+      <template v-else> Too late! </template>
     </div>
     <div :class="colClasses">
       <a
