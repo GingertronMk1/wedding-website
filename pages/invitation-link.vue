@@ -8,11 +8,15 @@ const colClasses = [
   "justify-content-start",
 ];
 
+interface Expiry {
+  endDate: number,
+  text: string
+}
+
 interface Form {
   text: string;
   iframeSrc: string;
-  endDate?: number;
-  expiryText?: string;
+  expiry?: Expiry
 }
 
 const forms: Array<Form> = [
@@ -20,9 +24,11 @@ const forms: Array<Form> = [
     text: "I am a Day Guest",
     iframeSrc:
       "https://docs.google.com/forms/d/e/1FAIpQLSceOkwlfbMtH6RYc4xY04KOkmiZrvfcS0HsT1n7WH-cmvipcg/viewform?embedded=true",
-    endDate: Date.parse("2024-07-16 00:00:00"),
-    expiryText:
-      "Unfortunately you've missed the deadline for day guest RSVPs. We'd still love to have you as an evening guest though, so please fill out the below RSVP.",
+    expiry: {
+      endDate: Date.parse("2024-07-16 00:00:00"),
+      text:
+        "Unfortunately you've missed the deadline for day guest RSVPs. We'd still love to have you as an evening guest though, so please fill out the below RSVP.",
+      }
   },
   {
     text: "I am an Evening Guest",
@@ -62,7 +68,7 @@ const currentDate = Date.now();
           >
             <div class="accordion-body">
               <iframe
-                v-if="item.endDate && item.endDate > currentDate"
+                v-if="item.expiry && item.expiry.endDate > currentDate"
                 :src="item.iframeSrc"
                 width="640"
                 height="767"
@@ -72,7 +78,7 @@ const currentDate = Date.now();
                 class="w-100"
                 >Loading…</iframe
               >
-              <div v-else v-text="item.expiryText" />
+              <div v-else-if="item.expiry" v-text="item.expiry.text" />
             </div>
           </div>
         </div>
