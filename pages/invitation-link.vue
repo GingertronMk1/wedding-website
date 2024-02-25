@@ -9,14 +9,14 @@ const colClasses = [
 ];
 
 interface Expiry {
-  endDate: number,
-  text: string
+  endDate: number;
+  text: string;
 }
 
 interface Form {
   text: string;
   iframeSrc: string;
-  expiry?: Expiry
+  expiry?: Expiry;
 }
 
 const forms: Array<Form> = [
@@ -26,9 +26,8 @@ const forms: Array<Form> = [
       "https://docs.google.com/forms/d/e/1FAIpQLSceOkwlfbMtH6RYc4xY04KOkmiZrvfcS0HsT1n7WH-cmvipcg/viewform?embedded=true",
     expiry: {
       endDate: Date.parse("2024-07-16 00:00:00"),
-      text:
-        "Unfortunately you've missed the deadline for day guest RSVPs. We'd still love to have you as an evening guest though, so please fill out the below RSVP.",
-      }
+      text: "Unfortunately you've missed the deadline for day guest RSVPs. We'd still love to have you as an evening guest though, so please fill out the below RSVP.",
+    },
   },
   {
     text: "I am an Evening Guest",
@@ -68,7 +67,7 @@ const currentDate = Date.now();
           >
             <div class="accordion-body">
               <iframe
-                v-if="item.expiry && item.expiry.endDate > currentDate"
+                v-if="!item.expiry || item.expiry.endDate > currentDate"
                 :src="item.iframeSrc"
                 width="640"
                 height="767"
