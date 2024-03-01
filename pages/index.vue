@@ -18,118 +18,41 @@ const itinerary = ref([
   },
 ]);
 
-interface MapArea {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
+interface Link {
   href: string;
-  target: string;
-  alt: string;
+  text: string;
+  additionalStyles?: string;
+  target?: string;
 }
 
-const originalImageHeight: number = 1834;
-const originalImageWidth: number = 2798;
-
-const mapAreas: Array<MapArea> = [
+const links: Ref<Array<Link>> = ref([
   {
-    x1: 865,
-    y1: 400,
-    x2: 1340,
-    y2: 705,
-    href: "https://www.swancarfarmcountryhouse.com/",
-    target: "_blank",
-    alt: "Swancar Farm Country House",
+    href: "/events/the-ceremony",
+    text: "The Ceremony",
   },
   {
-    x1: 1615,
-    y1: 1150,
-    x2: 2060,
-    y2: 1500,
-    href: "https://beestonparishchurch.com/",
-    target: "_blank",
-    alt: "St John The Baptist Church, Beeston",
+    href: "/events/the-reception",
+    text: "The Reception",
   },
-];
-
-function resizeMap(): Array<MapArea> {
-  const inviteMapImage = document.getElementById("invite-map");
-  if (!inviteMapImage) {
-    return [];
-  }
-
-  const clientWidth = inviteMapImage.clientWidth;
-  const clientHeight = inviteMapImage.clientHeight;
-
-  const xScale = originalImageWidth / clientWidth;
-  const yScale = originalImageHeight / clientHeight;
-
-  const originalAspectRatio = originalImageWidth / originalImageHeight;
-  const newAspectRatio = clientWidth / clientHeight;
-
-  console.table({
-    clientWidth,
-    clientHeight,
-    originalImageWidth,
-    originalImageHeight,
-    xScale,
-    yScale,
-    originalAspectRatio,
-    newAspectRatio,
-  });
-
-  return mapAreas.map(function (area) {
-    const newX1 = area.x1 / xScale;
-    const newX2 = area.x2 / xScale;
-    const newY1 = area.y1 / yScale;
-    const newY2 = area.y2 / yScale;
-    return {
-      ...area,
-      x1: newX1,
-      y1: newY1,
-      x2: newX2,
-      y2: newY2,
-    };
-  });
-}
-
-const computedMapAreas: Ref<Array<MapArea>> = ref([]);
-
-window.onload = function () {
-  computedMapAreas.value = resizeMap();
-};
-
-window.onresize = function () {
-  computedMapAreas.value = resizeMap();
-};
+  {
+    href: "/running-order",
+    text: "The Running Order",
+  },
+  {
+    href: "/accommodation",
+    text: "Accommodation",
+  },
+]);
 </script>
 <template>
-  <map name="invite-map">
-    <area
-      v-for="(computedArea, index) in computedMapAreas"
-      :key="index"
-      shape="rect"
-      :coords="
-        [
-          computedArea.x1,
-          computedArea.y1,
-          computedArea.x2,
-          computedArea.y2,
-        ].join(',')
-      "
-      :href="computedArea.href"
-      :alt="computedArea.alt"
-      target="_blank"
-    />
-  </map>
-  <img
-    id="invite-map"
-    src="/img/InviteMap.png"
-    class="w-100"
-    usemap="#invite-map"
-    alt="A map showing the locations for the wedding: St John's Church Beeston and Swancar Farm"
-    :height="originalImageHeight"
-    :width="originalImageWidth"
+  <a
+    v-for="(item, index) in links"
+    :key="index"
+    :href="item.href"
+    :target="item.target ?? undefined"
+    class="btn text-white w-100 fs-1 mb-3"
+    style="background-color: var(--primary)"
+    v-text="item.text"
   />
   <div class="card">
     <div class="card-header">The Key Information</div>
@@ -157,7 +80,7 @@ window.onresize = function () {
         </tr>
         <tr>
           <th class="p-3" scope="row">Where</th>
-          <td v-for="(item, index) in itinerary" :key="index">
+          <td v-for="(item, index) in itinerary" :key="index" class="p-0">
             <ul class="list-group list-group-flush">
               <li
                 v-for="(part, partIndex) in item.where"

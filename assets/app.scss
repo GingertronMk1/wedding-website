@@ -1,4 +1,11 @@
+@use "sass:math";
 @import 'fonts';
+
+:root {
+  --primary: rgb(224,53,78);
+  --secondary: rgb(169,211,244);
+  --text-primary: #501017;
+}
 
 html,
 body,
@@ -22,4 +29,17 @@ body {
 
 nav.navbar {
   font-family: 'AmsterdamOne';
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: 'AmsterdamOne';
+    line-height: 3;
+  }
+}
+
+.hide-after {
+  &::after {
+    display: none;
+  }
 }
