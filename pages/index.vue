@@ -50,7 +50,7 @@ const links: Ref<Array<Link>> = ref([
     :key="index"
     :href="item.href"
     :target="item.target ?? undefined"
-    class="btn text-white w-100 fs-1 mb-3"
+    class="btn text-white w-75 fs-1 mb-3 mx-auto"
     style="background-color: var(--primary)"
     v-text="item.text"
   />
