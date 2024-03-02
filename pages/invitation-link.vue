@@ -46,11 +46,12 @@ const links: Array<Link> = [
   </p>
   <template v-for="(item, index) in links" :key="index">
     <a
-      v-if="!item.expiry || item.expiry.endDate < Date.now()"
+      v-if="!item.expiry || item.expiry.endDate > Date.now()"
       :href="item.href"
       :target="item.external ? '_blank' : undefined"
       class="btn text-white w-100 fs-1 mb-3"
       style="background-color: var(--primary)"
+      :data-end-date="item.expiry?.endDate"
       v-text="item.text"
     />
     <div v-else v-text="item.expiry.text" />
