@@ -20,17 +20,6 @@ main {
   font-family: 'Fraunces';
 }
 
-body {
-  background-image: url('/img/background.png');
-  background-position: center;
-  background-size: 100% auto;
-  background-repeat: repeat-y;
-}
-
-nav.navbar {
-  font-family: 'AmsterdamOne';
-}
-
 @for $i from 1 through 6 {
   h#{$i} {
     font-family: 'AmsterdamOne';

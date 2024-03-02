@@ -25,17 +25,13 @@ const navItems = ref([
     ],
   },
   {
-    text: "Map",
-    to: "/map",
-  },
-  {
     text: "Accommodation",
     to: "/accommodation",
   },
 ]);
 </script>
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-light shadow-sm">
     <div class="container-fluid">
       <NuxtLink class="navbar-brand" to="/">
         <font-awesome-icon :icon="['fas', 'ring']" />

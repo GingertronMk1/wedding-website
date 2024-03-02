@@ -4,6 +4,29 @@ interface Option {
   description: string;
   url: string;
 }
+
+/**
+ * Delta by Marriott Nottingham Belfry
+ * 0115 973 9393
+ * thenottinghambelfry.co.uk
+ *
+ * Travelodge Wollaton Park
+ * 0871 559 1835
+ * Travelodge.co.uk
+ *
+ * Double Tree by Hilton
+ * Nottingham Gateway
+ * 0115 979 4949
+ *
+ * Premier Inn - The Phoenix Centre
+ * 0333 321 1378
+ * Millennium Way West, NG8 6AS
+ *
+ * Holiday Inn Derby/Nottingham
+ * 0871 942 9062
+ * hiderbynottinghamhotel.co.uk
+ */
+
 const options: Array<Option> = [
   {
     name: "Premier Inn Nottingham West",
