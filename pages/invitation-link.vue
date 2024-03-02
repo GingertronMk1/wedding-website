@@ -1,13 +1,4 @@
 <script setup lang="ts">
-const colClasses = [
-  "col-12",
-  "col-md-6",
-  "d-flex",
-  "flex-column",
-  "align-items-center",
-  "justify-content-start",
-];
-
 interface Expiry {
   endDate: number;
   text: string;
@@ -46,8 +37,6 @@ const links: Array<Link> = [
     external: false,
   },
 ];
-
-const currentDate = Date.now();
 </script>
 <template>
   <h3>You got our invitation! Hooray!</h3>
