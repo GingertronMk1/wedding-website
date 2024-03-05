@@ -113,13 +113,9 @@ const parties: Array<Party> = [
       >
         <h4 v-text="person.name" />
         <p
-          :style="{ 'white-space': 'preserve-breaks' }"
-          v-text="
-            person.bio
-              .split(/\n{2,}/)
-              .map((str) => str.replaceAll('\n', ' ').trim())
-              .join('\n\n')
-          "
+          v-for="(paragraph, index) in person.bio.split(/\n{2,}/)"
+          :key="index"
+          v-text="paragraph.replaceAll('\n', '').trim()"
         />
       </div>
     </div>
