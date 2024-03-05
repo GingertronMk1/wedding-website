@@ -108,13 +108,13 @@ const parties: Array<Party> = [
       <h2 v-text="party.name" />
       <div
         v-for="(person, personIndex) in party.people"
-        :key="`${partyIndex}-${personIndex}`"
+        :key="partyIndex + '-' + personIndex"
         class="mb-3"
       >
         <h4 v-text="person.name" />
         <p
-          v-for="(paragraph, index) in person.bio.split(/\n{2,}/)"
-          :key="index"
+          v-for="(paragraph, paragraphIndex) in person.bio.split(/\n{2,}/)"
+          :key="partyIndex + '-' + personIndex + '-' + paragraphIndex"
           v-text="paragraph.replaceAll('\n', '').trim()"
         />
       </div>
