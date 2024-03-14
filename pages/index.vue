@@ -5,15 +5,18 @@ import type { Ref } from "vue";
 const col1Width = ref(10);
 const otherColWidths = computed(() => (100 - col1Width.value) / 2);
 
-const itinerary = ref([
+interface ItineraryItem {
+  what: string;
+  where: Array<string>;
+}
+
+const itinerary = ref<Array<ItineraryItem>>([
   {
     what: "Ceremony",
-    when: Date.parse("22 Sep 2024 13:00:00 GMT"),
     where: ["Beeston Parish Church", "Beeston", "Nottingham", "NG9 1GA"],
   },
   {
     what: "Reception",
-    when: Date.parse("22 Sep 2024 19:00:00 GMT"),
     where: ["Swancar Farm", "Trowell Moor", "Trowell", "Nottingham", "NG9 3PQ"],
   },
 ]);
@@ -59,7 +62,7 @@ const links: Ref<Array<Link>> = ref([
     <table class="table mb-0">
       <thead>
         <tr>
-          <th :width="`${col1Width}%`" scope="col"></th>
+          <th class="px-3" :width="`${col1Width}%`" scope="col">What</th>
           <th
             v-for="(item, index) in itinerary"
             :key="index"
@@ -70,14 +73,6 @@ const links: Ref<Array<Link>> = ref([
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th class="p-3" scope="row">When</th>
-          <td
-            v-for="(item, index) in itinerary"
-            :key="index"
-            v-text="new Date(item.when).toUTCString()"
-          />
-        </tr>
         <tr>
           <th class="p-3" scope="row">Where</th>
           <td v-for="(item, index) in itinerary" :key="index" class="p-0">

@@ -7,17 +7,24 @@
   --text-primary: #501017;
 }
 
-html,
-body,
-#__nuxt,
-#__nuxt > *,
-main {
-  height: 100%;
+@mixin bigBit() {
   display: flex;
   flex-direction: column;
   min-height: 1px;
   flex: 1;
   font-family: 'Fraunces';
+}
+
+html,
+body,
+#__nuxt,
+#__nuxt > *,
+main {
+  @include bigBit();
+}
+
+html, body, #__nuxt, #__nuxt > * {
+  height: 100%;
 }
 
 @for $i from 1 through 6 {
@@ -31,4 +38,13 @@ main {
   &::after {
     display: none;
   }
+}
+
+#footer {
+  background-image: url('/img/footer.jpg');
+  background-position: center 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 370px;
+  padding: 1rem;
 }
