@@ -48,9 +48,9 @@ html, body, #__nuxt, #__nuxt > * {
   padding: 1rem;
   margin-top: auto;
 
-  @for $i from 1 through 5 {
-      @media screen and (min-width: #{($i - 1) * 480}px) {
-        min-height: #{$i * 100}px;
+  @for $i from 1 through 100 {
+      @media screen and (min-width: #{($i - 1) * 24}px) {
+        min-height: #{$i * 5.5}px;
       }
   }
 }
