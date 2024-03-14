@@ -55,7 +55,7 @@ They then proceeded to spend 2 hours every Saturday morning (just, it was 1am) i
 When Jack was awarded a fellowship for his service to the Nottingham New Theatre he could think of no better person to give a speech on his behalf.
 Now, 5 years or so hence, he once again called upon Ian's services as his best man.
     `,
-    photoUrl: "",
+    photoUrl: "/img/Ian Sheard.jpg",
   },
   {
     name: "Callum Walker",
@@ -65,7 +65,7 @@ I swear to god if he wears a kilt properly I'll kill him.
 Jack and Callum met at the NNT while Jack was in, and Callum overseeing, the first Unscripted the New Theatre put on.
 Quite how they became such firm friends remains unknown but it was at Callum's "I'm leaving Nottingham" party that Izzy and Jack had their first date.
 `,
-    photoUrl: "",
+    photoUrl: "/img/Callum Walker.jpg",
   },
   {
     name: "Tom Heath",
@@ -83,7 +83,7 @@ Jack and he are buddies, aren't they.
     bio: `
 Hang on a minute that looks familiar...
 `,
-    photoUrl: "",
+    photoUrl: "/img/Sam Osborne.jpg",
   },
 ];
 
