@@ -1,33 +1,34 @@
 <script setup lang="ts">
 interface Option {
   name: string;
-  description: string;
+  description?: string;
   url: string;
 }
-
-/**
- * Delta by Marriott Nottingham Belfry
- * 0115 973 9393
- * thenottinghambelfry.co.uk
- *
- * Travelodge Wollaton Park
- * 0871 559 1835
- * Travelodge.co.uk
- *
- * Double Tree by Hilton
- * Nottingham Gateway
- * 0115 979 4949
- *
- * Premier Inn - The Phoenix Centre
- * 0333 321 1378
- * Millennium Way West, NG8 6AS
- *
- * Holiday Inn Derby/Nottingham
- * 0871 942 9062
- * hiderbynottinghamhotel.co.uk
- */
-
 const options: Array<Option> = [
+  {
+    name: "Delta by Marriott Nottingham Belfry",
+    description:
+      "A four star hotel a mile from the M1, and close to Central Nottingham if you plan on taking in what Izzy and Jack's adoptive home city has to offer.",
+    url: "https://www.thenottinghambelfry.co.uk",
+  },
+  {
+    name: "Travelodge Wollaton Park",
+    description:
+      "Ideally located almost exactly between the church and the reception venue, you can't go too far wrong with a Travelodge that's basically attached to a steakhouse",
+    url: "https://www.travelodge.co.uk/hotels/474/Nottingham-Wollaton-Park-hotel",
+  },
+  {
+    name: "Double Tree by Hilton",
+    description:
+      "Very handy for the trams, and apparently you get a free warm cookie on checking in!",
+    url: "https://www.hilton.com/en/hotels/emanudi-doubletree-nottingham-gateway/",
+  },
+  {
+    name: "Holiday Inn Derby/Nottingham",
+    description:
+      "Just 200 yards from Junction 25 of the M1, this is an inexpensive and convenient option",
+    url: "https://www.hiderbynottinghamhotel.co.uk",
+  },
   {
     name: "Premier Inn Nottingham West",
     description:
@@ -36,7 +37,8 @@ const options: Array<Option> = [
   },
   {
     name: "The Star Inn, Beeston",
-    description: "Nice pub",
+    description:
+      "A delightful pub in the heart of Beeston, meaning it's a short walk to the church and a great breakfast in the morning. Jack's parents have been known to stay here as well.",
     url: "https://www.starbeeston.co.uk/pub-accommodation",
   },
 ];
@@ -49,13 +51,9 @@ const options: Array<Option> = [
     as straightforward as possible to get somewhere to spend the night.
   </p>
 
-  <ul>
-    <li v-for="(item, index) in options" :key="index" class="card mb-3">
-      <div class="card-header" v-text="item.name" />
-      <div class="card-body" v-text="item.description" />
-      <div class="card-footer">
-        <a :href="item.url" class="btn btn-primary" target="_blank">Link</a>
-      </div>
-    </li>
-  </ul>
+  <section v-for="(item, index) in options" :key="index" class="mb-3">
+    <h3 v-text="item.name" />
+    <p v-text="item.description" />
+    <a :href="item.url" class="btn btn-primary me-auto" target="_blank">Link</a>
+  </section>
 </template>
