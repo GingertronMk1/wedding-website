@@ -1,2 +1,1 @@
-[push]
-autoSetupRemote = true
+push.autoSetupRemote = true
