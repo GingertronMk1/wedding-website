@@ -28,66 +28,55 @@ interface Link {
   target?: string;
 }
 
-const links: Ref<Array<Link>> = ref([
-  {
-    href: "/events/the-ceremony",
-    text: "The Ceremony",
-  },
-  {
-    href: "/events/the-reception",
-    text: "The Reception",
-  },
-  {
-    href: "/running-order",
-    text: "The Running Order",
-  },
-  {
-    href: "/accommodation",
-    text: "Accommodation",
-  },
-]);
+const links: Ref<Array<Link>> = ref([]);
 </script>
 <template>
-  <a
-    v-for="(item, index) in links"
-    :key="index"
-    :href="item.href"
-    :target="item.target ?? undefined"
-    class="btn text-white w-75 fs-1 mb-3 mx-auto"
-    style="background-color: var(--primary)"
-    v-text="item.text"
-  />
-  <div class="card">
-    <div class="card-header">The Key Information</div>
-    <table class="table mb-0">
-      <thead>
-        <tr>
-          <th class="px-3" :width="`${col1Width}%`" scope="col">What</th>
-          <th
-            v-for="(item, index) in itinerary"
-            :key="index"
-            :width="`${otherColWidths}%`"
-            scope="col"
-            v-text="item.what"
-          />
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="p-3" scope="row">Where</th>
-          <td v-for="(item, index) in itinerary" :key="index" class="p-0">
-            <ul class="list-group list-group-flush">
-              <li
-                v-for="(part, partIndex) in item.where"
-                :key="partIndex"
-                class="list-group-item"
-                v-text="part"
-              />
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="card-footer">We can't wait to see you there!</div>
+  <div class="min-vw-100 row">
+    <div class="col-6" style="background-color: blue">test</div>
+    <div class="col-6" style="background-color: red">another test</div>
+  </div>
+  <div class="container col-12 py-3 d-flex flex-column">
+    <a
+      v-for="(item, index) in links"
+      :key="index"
+      :href="item.href"
+      :target="item.target ?? undefined"
+      class="btn text-white w-75 fs-1 mb-3 mx-auto"
+      style="background-color: var(--primary)"
+      v-text="item.text"
+    />
+    <div class="card">
+      <div class="card-header">The Key Information</div>
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th class="px-3" :width="`${col1Width}%`" scope="col">What</th>
+            <th
+              v-for="(item, index) in itinerary"
+              :key="index"
+              :width="`${otherColWidths}%`"
+              scope="col"
+              v-text="item.what"
+            />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="p-3" scope="row">Where</th>
+            <td v-for="(item, index) in itinerary" :key="index" class="p-0">
+              <ul class="list-group list-group-flush">
+                <li
+                  v-for="(part, partIndex) in item.where"
+                  :key="partIndex"
+                  class="list-group-item"
+                  v-text="part"
+                />
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-footer">We can't wait to see you there!</div>
+    </div>
   </div>
 </template>
