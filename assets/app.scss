@@ -84,6 +84,7 @@ img {
   position: relative;
   height: auto;
   width: 100%;
+  margin-bottom: 1rem;
 
   > #homepage-hero-image {
     width: 100%;
@@ -138,11 +139,12 @@ img {
 
     &__name {
       padding-left: $padding;
+      border-left: 2px solid $green;
     }
 
     &__time {
       padding-right: $padding;
-      border-right: 5px solid $green;
+      border-right: 2px solid $green;
       text-align: right;
     }
   }

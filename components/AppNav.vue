@@ -6,10 +6,6 @@ const navItems = ref([
     to: "/",
   },
   {
-    text: "Schedule",
-    to: "/running-order",
-  },
-  {
     text: "Locations",
     children: [
       {
