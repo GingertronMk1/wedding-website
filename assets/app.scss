@@ -124,3 +124,26 @@ img {
 
   }
 }
+
+#itinerary {
+  .itinerary-item {
+    display: flex;
+    flex-direction: row;
+
+    $padding: 0.4rem;
+
+    &__time, &__name {
+      flex: 1;
+    }
+
+    &__name {
+      padding-left: $padding;
+    }
+
+    &__time {
+      padding-right: $padding;
+      border-right: 5px solid $green;
+      text-align: right;
+    }
+  }
+}

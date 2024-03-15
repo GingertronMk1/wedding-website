@@ -98,14 +98,26 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
       <h1>We're getting married!</h1>
     </div>
   </div>
-  <div class="container d-flex flex-column py-3">
+  <div id="itinerary" class="container d-flex flex-column py-3">
     <div
       v-for="item in computedDayEvents"
       :key="JSON.stringify(item)"
-      :style="{
-        'margin-top': `${item.secondsSinceLastEvent / 100000}px`,
-      }"
-      v-text="`${item.name}: ${item.dateTime.toLocaleTimeString()}`"
-    />
+      class="itinerary-item"
+    >
+      <div
+        class="itinerary-item__time"
+        :style="{
+          'padding-top': `${item.secondsSinceLastEvent / 100000}px`,
+        }"
+        v-text="item.dateTime.toLocaleTimeString()"
+      />
+      <div
+        class="itinerary-item__name"
+        :style="{
+          'padding-top': `${item.secondsSinceLastEvent / 100000}px`,
+        }"
+        v-text="item.name"
+      />
+    </div>
   </div>
 </template>
