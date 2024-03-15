@@ -1,82 +1,111 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import type { Ref } from "vue";
+import { computed } from "vue";
 
-const col1Width = ref(10);
-const otherColWidths = computed(() => (100 - col1Width.value) / 2);
-
-interface ItineraryItem {
-  what: string;
-  where: Array<string>;
+interface RunningOrderItem {
+  name: string;
+  time: string;
 }
 
-const itinerary = ref<Array<ItineraryItem>>([
-  {
-    what: "Ceremony",
-    where: ["Beeston Parish Church", "Beeston", "Nottingham", "NG9 1GA"],
-  },
-  {
-    what: "Reception",
-    where: ["Swancar Farm", "Trowell Moor", "Trowell", "Nottingham", "NG9 3PQ"],
-  },
-]);
-
-interface Link {
-  href: string;
-  text: string;
-  additionalStyles?: string;
-  target?: string;
+interface ComputedRunningOrderItem extends RunningOrderItem {
+  dateTime: Date;
+  secondsSinceLastEvent: number;
 }
 
-const links: Ref<Array<Link>> = ref([]);
+const day: string = "2024-09-22";
+
+const dayEvents: Array<RunningOrderItem> = [
+  {
+    name: "Ceremony",
+    time: "13:00:00",
+  },
+  {
+    name: "Confetti photos",
+    time: "14:00:00",
+  },
+  {
+    name: "Drinks reception/photos",
+    time: "14:30:00",
+  },
+  {
+    name: "Seating for wedding breakfast",
+    time: "16:00:00",
+  },
+  {
+    name: "Izzy's Parents' Speech",
+    time: "16:15:00",
+  },
+  {
+    name: "Wedding Breakfast",
+    time: "16:30:00",
+  },
+  {
+    name: "Coffee and Cake",
+    time: "18:30:00",
+  },
+  {
+    name: "Speeches 2: Glass Barn Boogaloo",
+    time: "18:45:00",
+  },
+  {
+    name: "Cocktails",
+    time: "19:30:00",
+  },
+  {
+    name: "Dancing",
+    time: "20:00:00",
+  },
+  {
+    name: "Cake cutting and evening food",
+    time: "21:00:00",
+  },
+  {
+    name: "Last Orders",
+    time: "23:30:00",
+  },
+];
+
+const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
+  const dateTimeEvents = dayEvents.map((event) => ({
+    ...event,
+    dateTime: new Date(`${day} ${event.time}`),
+  }));
+
+  const computedEvents: Array<ComputedRunningOrderItem> = [];
+  dateTimeEvents.forEach(function (event, index) {
+    computedEvents.push({
+      ...event,
+      secondsSinceLastEvent:
+        index === 0
+          ? 0
+          : Math.abs(
+              event.dateTime.getTime() -
+                dateTimeEvents[index - 1].dateTime.getTime(),
+            ),
+    });
+  });
+  return computedEvents;
+});
 </script>
 <template>
-  <div class="min-vw-100 row">
-    <div class="col-6" style="background-color: blue">test</div>
-    <div class="col-6" style="background-color: red">another test</div>
-  </div>
-  <div class="container col-12 py-3 d-flex flex-column">
-    <a
-      v-for="(item, index) in links"
-      :key="index"
-      :href="item.href"
-      :target="item.target ?? undefined"
-      class="btn text-white w-75 fs-1 mb-3 mx-auto"
-      style="background-color: var(--primary)"
-      v-text="item.text"
+  <div id="homepage-hero">
+    <img
+      id="homepage-hero-image"
+      src="/img/homepage/hero.png"
+      width="5034"
+      height="1972"
     />
-    <div class="card">
-      <div class="card-header">The Key Information</div>
-      <table class="table mb-0">
-        <thead>
-          <tr>
-            <th class="px-3" :width="`${col1Width}%`" scope="col">What</th>
-            <th
-              v-for="(item, index) in itinerary"
-              :key="index"
-              :width="`${otherColWidths}%`"
-              scope="col"
-              v-text="item.what"
-            />
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class="p-3" scope="row">Where</th>
-            <td v-for="(item, index) in itinerary" :key="index" class="p-0">
-              <ul class="list-group list-group-flush">
-                <li
-                  v-for="(part, partIndex) in item.where"
-                  :key="partIndex"
-                  class="list-group-item"
-                  v-text="part"
-                />
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="card-footer">We can't wait to see you there!</div>
+    <div id="homepage-hero-overlay">
+      <h1>We're getting married!</h1>
     </div>
+  </div>
+  <div class="container d-flex flex-column py-3">
+    <div
+      v-for="item in computedDayEvents"
+      :key="JSON.stringify(item)"
+      :style="{
+        'margin-top': `${item.secondsSinceLastEvent / 100000}px`,
+      }"
+      v-text="`${item.name}: ${item.dateTime.toLocaleTimeString()}`"
+    />
   </div>
 </template>
