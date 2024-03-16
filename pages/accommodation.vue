@@ -44,16 +44,20 @@ const options: Array<Option> = [
 ];
 </script>
 <template>
-  <h1>Hotels and such nearby</h1>
+  <div class="container py-3">
+    <h1>Hotels and such nearby</h1>
 
-  <p>
-    We recognise that it's a long trip for many of you so we wanted to make it
-    as straightforward as possible to get somewhere to spend the night.
-  </p>
+    <p>
+      We recognise that it's a long trip for many of you so we wanted to make it
+      as straightforward as possible to get somewhere to spend the night.
+    </p>
 
-  <section v-for="(item, index) in options" :key="index" class="mb-3">
-    <h3 v-text="item.name" />
-    <p v-text="item.description" />
-    <a :href="item.url" class="btn btn-primary me-auto" target="_blank">Link</a>
-  </section>
+    <section v-for="(item, index) in options" :key="index" class="mb-5">
+      <h3 v-text="item.name" />
+      <p v-text="item.description" />
+      <a :href="item.url" class="btn btn-primary me-auto" target="_blank"
+        >Link</a
+      >
+    </section>
+  </div>
 </template>

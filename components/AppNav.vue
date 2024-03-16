@@ -6,10 +6,6 @@ const navItems = ref([
     to: "/",
   },
   {
-    text: "Schedule",
-    to: "/running-order",
-  },
-  {
     text: "Locations",
     children: [
       {
@@ -27,6 +23,10 @@ const navItems = ref([
   {
     text: "Accommodation",
     to: "/accommodation",
+  },
+  {
+    text: "Links",
+    to: "/invitation-link",
   },
 ]);
 </script>

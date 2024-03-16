@@ -1,10 +1,16 @@
 @use "sass:math";
 @import 'fonts';
 
+$primary: rgb(224,53,78);
+$secondary: rgb(169,211,244);
+$text-primary: #501017;
+$green: rgb(88, 109, 76);
+
 :root {
-  --primary: rgb(224,53,78);
-  --secondary: rgb(169,211,244);
-  --text-primary: #501017;
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --text-primary: #{$text-primary};
+  --green: #{$green};
 }
 
 @mixin bigBit() {
@@ -58,4 +64,88 @@ html, body, #__nuxt, #__nuxt > * {
 img {
   height: auto;
   width: auto;
+}
+
+@mixin shadowStroke($shadow-offset) {
+  $diagonal-offset: calc($shadow-offset * math.sqrt(2));
+  text-shadow:
+    $shadow-offset $shadow-offset 0 #000,
+    (-$shadow-offset) $shadow-offset 0 #000,
+    (-$shadow-offset) (-$shadow-offset) 0 #000,
+    $shadow-offset (-$shadow-offset) 0 #000,
+    $diagonal-offset $diagonal-offset 0 #000,
+    (-$diagonal-offset) $diagonal-offset 0 #000,
+    (-$diagonal-offset) (-$diagonal-offset) 0 #000,
+    $diagonal-offset (-$diagonal-offset) 0 #000
+    ;
+}
+
+#homepage-hero {
+  position: relative;
+  height: auto;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  > #homepage-hero-image {
+    width: 100%;
+  }
+
+  > #homepage-hero-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    color: darken($green, 30%);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background: none;
+
+    > h1 {
+      font-size: 2rem;
+      text-align: right;
+      text-wrap: nowrap;
+
+      @for $i from 30 through 60 {
+        @media (min-width: #{$i * 32}px) {
+            font-size: #{$i * 0.1}rem;
+        }
+      }
+    }
+    
+    @media (max-width: 680px) {
+        right: 0;
+        background-color: #ffffff40;
+
+        > h1 {
+          text-align: left;
+        }
+    }
+
+  }
+}
+
+#itinerary {
+  .itinerary-item {
+    display: flex;
+    flex-direction: row;
+
+    $padding: 0.4rem;
+
+    &__time, &__name {
+      flex: 1;
+    }
+
+    &__name {
+      padding-left: $padding;
+      border-left: 2px solid $green;
+    }
+
+    &__time {
+      padding-right: $padding;
+      border-right: 2px solid $green;
+      text-align: right;
+    }
+  }
 }
