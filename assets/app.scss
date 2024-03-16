@@ -7,10 +7,10 @@ $text-primary: #501017;
 $green: rgb(88, 109, 76);
 
 :root {
-  --primary: $primary;
-  --secondary: $secondary;
-  --text-primary: $text-primary;
-  --green: $green;
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --text-primary: #{$text-primary};
+  --green: #{$green};
 }
 
 @mixin bigBit() {

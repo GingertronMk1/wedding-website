@@ -24,6 +24,10 @@ const navItems = ref([
     text: "Accommodation",
     to: "/accommodation",
   },
+  {
+    text: "Links",
+    to: "/invitation-link",
+  },
 ]);
 </script>
 <template>
