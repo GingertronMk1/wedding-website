@@ -32,10 +32,6 @@ const links: Array<Link> = [
     external: true,
   },
   {
-    href: "/running-order",
-    text: "The Running Order",
-  },
-  {
     href: "/accommodation",
     text: "Accommodation",
   },
