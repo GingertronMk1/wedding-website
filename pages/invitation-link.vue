@@ -32,14 +32,6 @@ const links: Array<Link> = [
     external: true,
   },
   {
-    href: "/events/the-ceremony",
-    text: "The Ceremony",
-  },
-  {
-    href: "/events/the-reception",
-    text: "The Reception",
-  },
-  {
     href: "/running-order",
     text: "The Running Order",
   },
