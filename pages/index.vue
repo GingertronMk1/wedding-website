@@ -64,7 +64,7 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
 });
 </script>
 <template>
-  <div id="homepage-hero">
+  <div id="homepage-hero" class="mt-n3">
     <img
       id="homepage-hero-image"
       src="/img/homepage/hero.png"
@@ -76,16 +76,16 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
     </div>
   </div>
   <section id="about-us" class="container">
-    <h2>The Story So Far...</h2>
+    <h2 class="text-center">The Story So Far...</h2>
     <div class="row align-items-center">
       <img
         src="/img/homepage/about-us-1.jpg"
-        class="col-6 h-auto"
+        class="col-12 col-md-6 h-auto"
         width="4272"
         height="5981"
         alt=""
       />
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <p>
           They met doing theatre at the University of Nottingham. Well, that's
           not entirely true - Izzy first saw Jack performing at an improv comedy
@@ -125,11 +125,11 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
       </div>
     </div>
   </section>
-  <hr />
+  <hr class="m-5" />
   <section id="where-and-when" class="container">
-    <h2>Where and When</h2>
-    <div class="row align-items-start">
-      <div class="col-6">
+    <h2 class="text-center">Where and When</h2>
+    <div class="row align-items-center">
+      <div class="col-12 col-md-6 order-0 order-md-0">
         <h4>The Ceremony</h4>
 
         <p>
@@ -145,18 +145,18 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
         alt=""
         width="2484"
         height="1782"
-        class="col-6 h-auto"
+        class="col-12 col-md-6 h-auto order-1 order-md-1"
       />
     </div>
-    <div class="row align-items-start">
+    <div class="row align-items-center">
       <img
         src="/img/Venue PNG.png"
         width="2474"
         height="1253"
-        class="col-6 h-auto"
+        class="col-12 col-md-6 h-auto order-md-0 order-1"
       />
 
-      <div class="col-6">
+      <div class="col-12 col-md-6 order-md-1 order-0">
         <h4>The Reception</h4>
         <p>
           The reception, wedding breakfast, and evening frivolities will be held
@@ -172,9 +172,9 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
       </div>
     </div>
   </section>
-  <hr />
+  <hr class="m-5" />
   <section id="itinerary" class="container d-flex flex-column py-3">
-    <h2>The Running Order</h2>
+    <h2 class="text-center">The Running Order</h2>
     <div
       v-for="(item, index) in computedDayEvents"
       :key="JSON.stringify(item)"

@@ -30,5 +30,6 @@ module.exports = {
     createError: "readonly",
     useRuntimeConfig: "readonly",
     google: "readonly",
+    useRoute: "readonly"
   },
 };

@@ -2,7 +2,7 @@
   <div>
     <client-only>
       <AppNav />
-      <main class="col-12 py-3" style="--bs-bg-opacity: 0.8">
+      <main class="col-12" style="--bs-bg-opacity: 0.8">
         <NuxtPage />
       </main>
       <AppFooter />
