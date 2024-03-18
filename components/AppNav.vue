@@ -34,7 +34,14 @@ const navItems = ref([
   <nav class="navbar navbar-expand-lg bg-light shadow-sm">
     <div class="container-fluid">
       <NuxtLink class="navbar-brand" to="/">
-        <font-awesome-icon :icon="['fas', 'ring']" />
+        <img
+          src="/img/logo.png"
+          alt=""
+          width="200"
+          height="200"
+          style="max-height: 40px"
+          class="h-100 w-auto"
+        />
       </NuxtLink>
       <button
         class="navbar-toggler"

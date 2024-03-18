@@ -19,7 +19,7 @@ const dayEvents: Array<RunningOrderItem> = [
     time: "13:00:00",
   },
   {
-    name: "Drinks Reception/Photos",
+    name: "Drinks Reception and Photos",
     time: "14:30:00",
   },
   {
@@ -137,8 +137,9 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
           1 o'clock on the afternoon of Sunday the 22nd of September 2024. The
           church is well-located for public transport, being 200m from the
           Beeston Centre Tram Stop, and roughly 300m from a Tesco in whose car
-          park you can stay for 3 hours for free. There is also a slightly
-          closer car park, but you do have to pay for it.
+          park you can stay for 3 hours for free (Jack's choice). There is also
+          a slightly closer car park, but you do have to pay for it (Izzy's
+          choice).
         </p>
       </div>
       <img
@@ -160,9 +161,9 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
       <div class="col-12 col-md-6 order-md-1 order-0">
         <h4>The Reception</h4>
         <p>
-          For day guests we then go to Swancar Farm Country House, where the
+          For day guests, we then go to Swancar Farm Country House, where the
           drinks reception begins at 2:30pm, followed by the wedding breakfast.
-          The evening party is expected to start at half past 7 that evening.
+          The evening party is expected to start at 7:30pm.
         </p>
         <p>
           Swancar is markedly less public transport-friendly than St John's, so
