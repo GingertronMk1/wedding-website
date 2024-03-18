@@ -97,7 +97,7 @@ img {
     bottom: 0;
     right: 50%;
     color: darken($green, 30%);
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     background: none;
@@ -132,6 +132,7 @@ img {
     flex-direction: row;
 
     $padding: 0.4rem;
+    $border: 2px solid black;
 
     &__time, &__name {
       flex: 1;
@@ -139,13 +140,17 @@ img {
 
     &__name {
       padding-left: $padding;
-      border-left: 2px solid $green;
+      border-left: $border;
     }
 
     &__time {
       padding-right: $padding;
-      border-right: 2px solid $green;
+      border-right: $border;
       text-align: right;
     }
   }
+}
+
+img[src$="/img/Church PNG.png"] {
+  transform: rotate(-2deg);
 }
