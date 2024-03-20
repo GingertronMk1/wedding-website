@@ -12,31 +12,31 @@ interface Party {
 
 const bridalParty: Array<Person> = [
   {
+    name: "Sabrina Klein/Parker/Parkour",
+    bio: `Too many options for surname honestly.`,
+    photoUrl: "/img/wedding-party/Sabrina Klein.jpg",
+  },
+  {
     name: "Emma Barber",
     bio: `
       Also a food science student, is probably ultimately responsible for Izzy meeting Jack so in a way this is all her fault.
     `,
-    photoUrl: "",
+    photoUrl: "/img/wedding-party/Emma Barber.jpg",
   },
   {
     name: "Joanne Blunt",
     bio: `Became fast friends with Izzy on moving back to the NG postcode, mostly thanks to a shared interest in rolling their eyes at whatever Jack and Ian get up to.`,
-    photoUrl: "",
-  },
-  {
-    name: "Sabrina Klein/Parker/Parkour",
-    bio: `Too many options for surname honestly.`,
-    photoUrl: "",
+    photoUrl: "/img/wedding-party/Joanne Blunt.jpg",
   },
   {
     name: "Laura Wolczyk",
     bio: `Fun fact: was actually Jack's Freshers' Fringe sister.`,
-    photoUrl: "",
+    photoUrl: "/img/wedding-party/Laura Wolczyk.jpg",
   },
   {
     name: "Sam Osborne",
     bio: `Close friend and confidant, although it did look shaky for a few months there.`,
-    photoUrl: "",
+    photoUrl: "/img/wedding-party/Sam Osborne.jpg",
   },
 ];
 
@@ -54,8 +54,8 @@ They then proceeded to spend 2 hours every Saturday morning (just, it was 1am) i
 
 When Jack was awarded a fellowship for his service to the Nottingham New Theatre he could think of no better person to give a speech on his behalf.
 Now, 5 years or so hence, he once again called upon Ian's services as his best man.
-    `,
-    photoUrl: "/img/Ian Sheard.jpg",
+`,
+    photoUrl: "/img/wedding-party/Ian Sheard.jpg",
   },
   {
     name: "Callum Walker",
@@ -65,7 +65,7 @@ I swear to god if he wears a kilt properly I'll kill him.
 Jack and Callum met at the NNT while Jack was in, and Callum overseeing, the first Unscripted the New Theatre put on.
 Quite how they became such firm friends remains unknown but it was at Callum's "I'm leaving Nottingham" party that Izzy and Jack had their first date.
 `,
-    photoUrl: "/img/Callum Walker.jpg",
+    photoUrl: "/img/wedding-party/Callum Walker.jpg",
   },
   {
     name: "Tom Heath",
@@ -76,14 +76,14 @@ Through some kind of strange mind-meld it transpired that their tastes in comedy
 
 Jack and he are buddies, aren't they.
 `,
-    photoUrl: "",
+    photoUrl: "/img/wedding-party/Tom Heath.jpg",
   },
   {
     name: "Sam Osborne",
     bio: `
-Hang on a minute that looks familiar...
+Hang on a minute he looks familiar...
 `,
-    photoUrl: "/img/Sam Osborne.jpg",
+    photoUrl: "/img/wedding-party/Sam Osborne.jpg",
   },
 ];
 
@@ -99,24 +99,43 @@ const parties: Array<Party> = [
 ];
 </script>
 <template>
-  <div class="row">
-    <div
-      v-for="(party, partyIndex) in parties"
-      :key="partyIndex"
-      class="col-12 col-lg-6"
-    >
-      <h2 v-text="party.name" />
+  <div class="container">
+    <div class="row">
       <div
-        v-for="(person, personIndex) in party.people"
-        :key="partyIndex + '-' + personIndex"
-        class="mb-3"
+        v-for="(party, partyIndex) in parties"
+        :key="partyIndex"
+        class="col-12 col-lg-6"
       >
-        <h4 v-text="person.name" />
-        <p
-          v-for="(paragraph, paragraphIndex) in person.bio.split(/\n{2,}/)"
-          :key="partyIndex + '-' + personIndex + '-' + paragraphIndex"
-          v-text="paragraph.replaceAll('\n', '').trim()"
-        />
+        <h2 v-text="party.name" />
+        <div
+          v-for="(person, personIndex) in party.people"
+          :key="partyIndex + '-' + personIndex"
+          class="mb-3"
+        >
+          <h4 v-text="person.name" />
+          <div class="row">
+            <div
+              class="col-12 col-md-6 d-flex flex-column justify-content-center"
+            >
+              <p
+                v-for="(paragraph, paragraphIndex) in person.bio.split(
+                  /\n{2,}/,
+                )"
+                :key="partyIndex + '-' + personIndex + '-' + paragraphIndex"
+                v-text="paragraph.replaceAll('\n', ' ').trim()"
+              />
+            </div>
+            <div
+              class="col-12 col-md-6 d-flex flex-column justify-content-center"
+            >
+              <img
+                :src="person.photoUrl"
+                class="w-100 h-auto"
+                :alt="`A photograph of ${person.name}.`"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
