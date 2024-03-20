@@ -19,7 +19,10 @@ const bridalParty: Array<Person> = [
   {
     name: "Emma Barber",
     bio: `
-      Also a food science student, is probably ultimately responsible for Izzy meeting Jack so in a way this is all her fault.
+Izzy and Emma first met as Freshers on SB in a Nutrition Lecture, bonded by their shared lack of a Biology A-level and confusion over chemiosomotic theory¹.
+They spent many hours together not doing uni work and instead getting heavily involved in societies - in fact it is because of Emma that Izzy went to the infamous improv show and later joined the Nottingham New Theatre at all! So this whole wedding is really her fault...
+
+¹Note from Jack: I don't know either.
     `,
     photoUrl: "/img/wedding-party/Emma Barber.jpg",
   },
