@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      whitespace: "preserve",
+    },
+  },
   runtimeConfig: {
     public: {
       mapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
