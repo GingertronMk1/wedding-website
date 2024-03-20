@@ -112,8 +112,8 @@ const taxiServices: Array<TaxiService> = [
     </p>
 
     <section
-      v-for="(item, index) in computedPlaceToStays"
-      :key="index"
+      v-for="item in computedPlaceToStays"
+      :key="JSON.stringify(item)"
       class="mb-5 row"
     >
       <div class="col-md-6 col-12 d-flex flex-column justify-content-center">
@@ -144,8 +144,8 @@ const taxiServices: Array<TaxiService> = [
     </section>
     <h2>Taxi Services</h2>
     <p>
-      We recommend you don't use Uber - it works but we'd rather support local
-      business, such as the below {{ taxiServices.length }} taxi services.
+      Uber does work round here but we're all for supporting local businesses,
+      such as the below {{ taxiServices.length }} taxi services.
     </p>
 
     <ul>
@@ -158,9 +158,10 @@ const taxiServices: Array<TaxiService> = [
 
     <p>
       In particular Jack recommends DG Taxis - in October 2023 Izzy got a flat
-      tyre on the M1 and Jack had to get a taxi out to her. It was a DG Cars
-      taxi, and not only did the driver (after some explanation) take Jack to
-      "somewhere on the M1", he actually changed the tyre for them!
+      tyre on the M1 and managed to lock herself out of the car, and Jack had to
+      get a taxi out to her. It was a DG Cars taxi, and not only did the driver
+      (after some explanation) take Jack to "somewhere on the M1", he actually
+      changed the tyre for them!
     </p>
   </div>
 </template>
