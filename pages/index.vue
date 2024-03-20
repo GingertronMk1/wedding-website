@@ -19,7 +19,7 @@ const dayEvents: Array<RunningOrderItem> = [
     time: "13:00:00",
   },
   {
-    name: "Drinks Reception and Photos",
+    name: "Drinks\xa0Reception and\xa0Photos",
     time: "14:30:00",
   },
   {
@@ -35,7 +35,7 @@ const dayEvents: Array<RunningOrderItem> = [
     time: "20:00:00",
   },
   {
-    name: "Cake Cutting and Pizza",
+    name: "Cake\xa0Cutting and\xa0Pizza",
     time: "21:00:00",
   },
 ];
