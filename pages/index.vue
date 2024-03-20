@@ -62,6 +62,33 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
   });
   return computedEvents;
 });
+
+const theStorySoFar = `
+Izzy and Jack met doing student theatre at the University of Nottingham, and the rest is history!
+Well, sort of...
+
+Izzy first saw Jack doing an improv comedy show at Sutton Bonington (a "satellite campus" and Izzy's home).
+Jack did not see Izzy, and mostly remembers being paid in beer for the gig.
+Luckily he made a good impression - he was, quote, "one of the actually funny ones".
+When they met properly is the subject of much debate and conjecture, though it definitely involved some kind of 80s music and a now-condemned student theatre.
+
+Subject of less debate and conjecture is how they started going out.
+The Nottingham New Theatre hosts an annual, end of year boat party.
+This was the last university event Jack was ever going to go to, so like any good student terrified at the prospect of entering the "real world", he got well and truly trollied.
+And it was only thanks to this trollying that he was able to overcome his innate awkwardness and ask Izzy out.
+Three times.
+Fortunately for him Izzy said yes every time, and again a further one time the next morning when he made it clear he was, in fact, serious.
+
+Skip forward six months and the world is on the brink of a global pandemic.
+After 6 months of a relationship, having such a thing forcing you to not just move in with one another but basically be around and under one another's feet for eighteen solid months might be a problem.
+But they made it.
+And now here we are.
+
+Jack proposed on the 20th of April 2023.
+He had ordered the ring from Izzy's favourite jeweller on Instagram some months before, and fully intended (at least he promises) to wait until the right moment - maybe at a Pick Your Own Fruit Farm in North Notts! We will never know for sure what that moment would have looked like because in less than six hours of the ring arriving he was down on one knee.
+Izzy proceeded to call him a f***ing idiot three times.
+But fortunately for him she did then also say yes.
+`;
 </script>
 <template>
   <div id="homepage-hero" class="mt-n3">
@@ -86,42 +113,7 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
         alt=""
       />
       <div class="col-12 col-md-6">
-        <p>
-          They met doing theatre at the University of Nottingham. Well, that's
-          not entirely true - Izzy first saw Jack performing at an improv comedy
-          show on Sutton Bonington Campus. She thought he was "one of the
-          genuinely funny ones". When they met properly is the subject of much
-          debate and conjecture, really it was one of those situations where two
-          social circles join together and become one.
-        </p>
-        <p>
-          Subject of less debate and conjecture is how they started going out.
-          The Nottingham New Theatre, like many societies at UoN, hosts an
-          annual boat party. This was the last university event Jack was ever
-          going to go to, so like any good student terrified at the prospect of
-          entering the "real world", he got good and trollied. And it was only
-          thanks to this trollying that he was able to overcome his innate
-          awkwardness and ask Izzy out. Three times. Fortunately for him Izzy
-          said yes 3 times, and again a further one time the next morning when
-          he made it clear he was serious.
-        </p>
-        <p>
-          It hasn't been the easiest thing in the world - a global pandemic
-          starting within 6 months of a relationship forcing you to not just
-          move in with one another but basically be around and under one
-          another's feet for 18 solid months. But they made it. And now here we
-          are.
-        </p>
-        <p>
-          Jack proposed on the 20th of April 2023. He'd ordered the ring from
-          Izzy's favourite jeweller on Instagram some months before, and it
-          arrived that day. He had (at least he promises) had intentions of
-          waiting until the right moment, ideally picking fruit at a farm in
-          north Notts. But (and if you know Jack you'll know this is basically a
-          personality trait at this point) he couldn't wait. Izzy called him a
-          f***ing idiot 3 times when he asked. But again, fortunately for him
-          she did also then say yes.
-        </p>
+        <p v-for="p in theStorySoFar.split('\n\n')" :key="p" v-text="p" />
       </div>
     </div>
   </section>
