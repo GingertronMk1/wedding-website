@@ -50,7 +50,9 @@ Laura was technically Jack's friend first, given that they performed at the Thea
   },
   {
     name: "Sam Osborne",
-    bio: `Close friend and confidant, although it did look shaky for a few months there.`,
+    bio: `
+Sam and Izzy became friends kind of slowly to begin with, then at some point the friendship eroded enough of the rock of their own respective social anxieties and the dam broke.
+`,
     photoUrl: "/img/wedding-party/Sam Osborne.jpg",
   },
 ];
