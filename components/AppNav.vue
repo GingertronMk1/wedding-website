@@ -26,11 +26,11 @@ const navItems = ref([
   },
   {
     text: "The Cast",
-    to: "/wedding-party"
+    to: "/wedding-party",
   },
   {
     text: "FAQs",
-    to: "faqs"
+    to: "faqs",
   },
   {
     text: "Links",
