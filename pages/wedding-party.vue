@@ -13,7 +13,11 @@ interface Party {
 const bridalParty: Array<Person> = [
   {
     name: "Sabrina Klein/Parker/Parkour",
-    bio: `Too many options for surname honestly.`,
+    bio: `
+Izzy and Sabrina met many, many years ago at the age of four.
+Neither of them actually remember it but there is considerable photographic proof.
+Over the years they have shared many of life's big moments (and a lot of the small ones too), they haven't lived in the same city since school, but always know that the other has their back no matter what.
+`,
     photoUrl: "/img/wedding-party/Sabrina Klein.jpg",
   },
   {
@@ -28,12 +32,20 @@ They spent many hours together not doing uni work and instead getting heavily in
   },
   {
     name: "Joanne Blunt",
-    bio: `Became fast friends with Izzy on moving back to the NG postcode, mostly thanks to a shared interest in rolling their eyes at whatever Jack and Ian get up to.`,
+    bio: `
+Izzy and Joanne initially bonded over a shared exasperation at whatever nonsense Jack and Ian were getting up to.
+Since then they have discovered many other things in common - like crafting, videogames, and being generally lovely people.
+Though they can often still be found rolling their eyes at the guys' strange goings on.    
+`,
     photoUrl: "/img/wedding-party/Joanne Blunt.jpg",
   },
   {
     name: "Laura Wolczyk",
-    bio: `Fun fact: was actually Jack's Freshers' Fringe sister.`,
+    bio: `
+Izzy and Laura met for the first time while exceptionally tired in the theatre, and since then very little has changed.
+They can often be found drinking copious amounts of wine and watching the sunrise (which happens both too often and not often enough in Izzy's eyes).
+Laura was technically Jack's friend first, given that they performed at the Theatre's Freshers Fringe together - however Izzy called dibs.
+`,
     photoUrl: "/img/wedding-party/Laura Wolczyk.jpg",
   },
   {
