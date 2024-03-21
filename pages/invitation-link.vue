@@ -54,6 +54,14 @@ const links: LinkList = {
       icons: ["fas", "hotel"],
     },
     {
+      text: "The Wedding Party",
+      href: "/wedding-party"
+    },
+    {
+      text: "FAQs",
+      href: "/faqs"
+    },
+    {
       text: "About Us",
       href: "/",
       icons: ["fas", "person-circle-question"],
@@ -103,7 +111,7 @@ const buttonClasses: Array<string> = [
             style="background-color: var(--primary)"
             :data-end-date="item.expiry?.endDate"
           >
-            <font-awesome-icon class="me-2" :icon="item.icons" />
+            <font-awesome-icon v-if="item.icons" class="me-2" :icon="item.icons" />
             <span v-text="item.text" />
           </a>
           <div v-else v-text="item.expiry.text" />
