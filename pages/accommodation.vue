@@ -61,7 +61,7 @@ const PlaceToStays: Array<PlaceToStay> = [
   {
     name: "The Star Inn, Beeston",
     description:
-      "A delightful pub in the heart of Beeston, meaning it's a short walk to the church and a great breakfast in the morning. Jack's parents have been known to stay here on occasion.",
+      "A delightful pub in the heart of Beeston, meaning it's a short walk to the church. Jack's parents have been known to stay here on occasion.",
     url: "https://www.starbeeston.co.uk/pub-accommodation",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.306564790988!2d-1.2157310228844922!3d52.92490970617217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879e9c4ae21d63d%3A0xd8ce4b864324f890!2sThe%20Star%20Inn!5e0!3m2!1sen!2suk!4v1710784740210!5m2!1sen!2suk",
