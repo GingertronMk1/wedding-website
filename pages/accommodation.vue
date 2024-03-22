@@ -41,7 +41,7 @@ const PlaceToStays: Array<PlaceToStay> = [
   {
     name: "Holiday Inn Derby/Nottingham",
     description:
-      "Just 200 yards from Junction 25 of the M1, this is an inexpensive and convenient PlaceToStay",
+      "Just 200 yards from Junction 25 of the M1, this is an inexpensive and convenient place to stay",
     url: "https://www.hiderbynottinghamhotel.co.uk",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2405.6424907037112!2d-1.304521422884788!3d52.91886310662222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879eed2f1921307%3A0x1f762ac93ec844d!2sHoliday%20Inn%20Derby%20-%20Nottingham%20M1%2C%20JCT.25%2C%20an%20IHG%20Hotel!5e0!3m2!1sen!2suk!4v1710784678492!5m2!1sen!2suk",
