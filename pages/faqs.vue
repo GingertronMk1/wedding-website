@@ -27,7 +27,7 @@ If you are an evening guest please arrive at Swancar for 7:30 in the evening.
     question: "Can I ask you a less frequently asked question?",
     answer: `
 Of course!
-Get in touch with Izzy (izzydebono@gmail.com / 07897327636) or Jack (jackellis1504@gmail.com / 07948437374) for anything you want clearing up.
+Get in touch with Izzy (izzydebono@gmail.com / 07897327636) or Jack (jackellis1504@gmail.com / 07948437374) for anything you want clarifying.
 `,
   },
 ];

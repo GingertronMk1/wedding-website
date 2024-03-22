@@ -126,7 +126,7 @@ const taxiServices: Array<TaxiService> = [
           class="btn text-white me-auto my-3"
           style="background-color: var(--primary)"
           target="_blank"
-          v-text="`Website`"
+          v-text="`Link to website`"
         />
       </div>
       <div class="col-md-6 col-12">

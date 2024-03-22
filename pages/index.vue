@@ -77,7 +77,7 @@ The Nottingham New Theatre hosts an annual, end of year boat party.
 This was the last university event Jack was ever going to go to, so like any good student terrified at the prospect of entering the "real world", he got well and truly trollied.
 And it was only thanks to this trollying that he was able to overcome his innate awkwardness and ask Izzy out.
 Three times.
-Fortunately for him Izzy said yes every time, and again a further one time the next morning when he made it clear he was, in fact, serious.
+Fortunately for him, Izzy said yes every time, and again a further one time the next morning when he made it clear he was, in fact, serious.
 
 Skip forward six months and the world is on the brink of a global pandemic.
 After 6 months of a relationship, having such a thing forcing you to not just move in with one another but basically be around and under one another's feet for eighteen solid months might be a problem.
@@ -126,12 +126,13 @@ But fortunately for him she did then also say yes.
 
         <p>
           The ceremony will be held at St John The Baptist Church in Beeston at
-          1 o'clock on the afternoon of Sunday the 22nd of September 2024. The
-          church is well-located for public transport, being 200m from the
-          Beeston Centre Tram Stop, and roughly 300m from a Tesco in whose car
-          park you can stay for 3 hours for free (Jack's choice). There is also
-          a slightly closer car park, but you do have to pay for it (Izzy's
-          choice).
+          1 o'clock on the afternoon of Sunday the 22nd of September 2024 -
+          please arrive at 12:30 to be greeted and seated.The church is
+          well-located for public transport, being 200m from the Beeston Centre
+          Tram Stop, and roughly 300m from a Tesco in whose car park you can
+          stay for 3 hours for free (Jack's choice). There is also a slightly
+          closer car park (Beeston Square car park specifically), but you do
+          have to pay for it (Izzy's choice).
         </p>
       </div>
       <img
@@ -155,19 +156,23 @@ But fortunately for him she did then also say yes.
         <p>
           For day guests, we then go to Swancar Farm Country House, where the
           drinks reception begins at 2:30pm, followed by the wedding breakfast.
-          The evening party is expected to start at 7:30pm.
+          The evening party is expected to start at 7:30pm - evening guests get
+          there then.
         </p>
         <p>
           Swancar is markedly less public transport-friendly than St John's, so
           if you are not driving yourself we recommend using a local taxi
-          service.
+          service. There is a fair bit of parking available at Swancar if you
+          are driving yourself.
         </p>
       </div>
     </div>
   </section>
   <hr class="m-5" />
   <section id="itinerary" class="container d-flex flex-column py-3">
-    <h2 class="text-center">The Running Order</h2>
+    <h2 class="text-center">
+      The Running Order <small class="h6">(Times TBC)</small>
+    </h2>
     <div
       v-for="(item, index) in computedDayEvents"
       :key="JSON.stringify(item)"
