@@ -148,20 +148,22 @@ const taxiServices: Array<TaxiService> = [
       such as the below {{ taxiServices.length }} taxi services.
     </p>
 
-    <ul>
-      <li
-        v-for="taxiService in taxiServices"
-        :key="JSON.stringify(taxiService)"
-        v-text="`${taxiService.name}: ${taxiService.tel}`"
-      />
-    </ul>
+    <a name="local-taxis">
+      <ul>
+        <li
+          v-for="taxiService in taxiServices"
+          :key="JSON.stringify(taxiService)"
+          v-text="`${taxiService.name}: ${taxiService.tel}`"
+        />
+      </ul>
 
-    <p>
-      In particular Jack recommends DG Taxis - in October 2023 Izzy got a flat
-      tyre on the M1 and managed to lock herself out of the car, and Jack had to
-      get a taxi out to her. It was a DG Cars taxi, and not only did the driver
-      (after some explanation) take Jack to "somewhere on the M1", he actually
-      changed the tyre for them!
-    </p>
+      <p>
+        In particular Jack recommends DG Taxis - in October 2023 Izzy got a flat
+        tyre on the M1 and managed to lock herself out of the car, and Jack had
+        to get a taxi out to her. It was a DG Cars taxi, and not only did the
+        driver (after some explanation) take Jack to "somewhere on the M1", he
+        actually changed the tyre for them!
+      </p>
+    </a>
   </div>
 </template>
