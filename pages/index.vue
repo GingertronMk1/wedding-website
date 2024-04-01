@@ -67,7 +67,7 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
   <div id="homepage-hero" class="mt-n3">
     <img
       id="homepage-hero-image"
-      src="/img/homepage/hero.png"
+      src="/img/homepage/hero.jpg"
       width="5034"
       height="1972"
     />
@@ -122,9 +122,8 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
   </section>
   <hr class="m-5" />
   <section id="itinerary" class="container d-flex flex-column py-3">
-    <h2 class="text-center">
-      The Running Order <small class="h6">(Times TBC)</small>
-    </h2>
+    <h2 class="text-center" v-text="`The Running Order`" />
+    <h6 class="text-center" v-text="`(Times TBC)`" />
     <div
       v-for="(item, index) in computedDayEvents"
       :key="JSON.stringify(item)"
