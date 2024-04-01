@@ -116,10 +116,11 @@ img {
     
     @media (max-width: 680px) {
         right: 0;
-        background-color: #ffffff40;
+        background-color: #ffffff80;
 
         > h1 {
           text-align: left;
+          padding: 1rem;
         }
     }
 
