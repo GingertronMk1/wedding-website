@@ -1,3 +1,3 @@
 The ceremony will be held at St John The Baptist Church in Beeston at 1 o'clock on the afternoon of Sunday the 22nd of September 2024 - please arrive at 12:30 to be greeted and seated.
 The church is well-located for public transport, being 200m from the [Beeston Centre Tram Stop](https://maps.app.goo.gl/nge92hrU1PSo78SG7), and roughly 300m from a [Tesco](https://maps.app.goo.gl/Q7bDA9zCe91hi4mz9) in whose car park you can stay for 3 hours for free (Jack's choice).
-There is also a slightly closer car park ([Beeston Square Car Park](https://maps.app.goo.gl/oBicLZzZg9B18Urc6) specifically), but you do have to pay for it (Izzy's choice).
+There are other car parks, [a list of which is available here](https://www.broxtowe.gov.uk/for-you/roads-parking-travel/car-parks/beeston-car-parks/), but you do have to pay for them.
