@@ -9,6 +9,8 @@ interface RunningOrderItem {
 interface ComputedRunningOrderItem extends RunningOrderItem {
   dateTime: Date;
   minutesSinceLastEvent: number;
+  hours: string;
+  minutes: string;
 }
 
 const day: string = "2024-09-22";
@@ -19,7 +21,7 @@ const dayEvents: Array<RunningOrderItem> = [
     time: "13:00:00",
   },
   {
-    name: "Drinks\xa0Reception and\xa0Photos",
+    name: "Drinks\xa0Reception",
     time: "14:30:00",
   },
   {
@@ -58,6 +60,8 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
                 dateTimeEvents[index - 1].dateTime.getTime(),
             ) /
             (1000 * 60),
+      hours: event.dateTime.getHours().toString(10).padStart(2, "0"),
+      minutes: event.dateTime.getMinutes().toString(10).padStart(2, "0"),
     });
   });
   return computedEvents;
@@ -123,9 +127,8 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
   <hr class="m-5" />
   <section id="itinerary" class="container d-flex flex-column py-3">
     <h2 class="text-center" v-text="`The Running Order`" />
-    <h6 class="text-center" v-text="`(Times TBC)`" />
     <div
-      v-for="(item, index) in computedDayEvents"
+      v-for="item in computedDayEvents"
       :key="JSON.stringify(item)"
       class="itinerary-item"
     >
@@ -134,14 +137,14 @@ const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
         :style="{
           'padding-top': `${item.minutesSinceLastEvent / 3}px`,
         }"
-        v-text="index % 2 ? item.name : ''"
+        v-text="`${item.hours}:${item.minutes}`"
       />
       <div
         class="itinerary-item__name"
         :style="{
           'padding-top': `${item.minutesSinceLastEvent / 3}px`,
         }"
-        v-text="index % 2 ? '' : item.name"
+        v-text="item.name"
       />
     </div>
   </section>
