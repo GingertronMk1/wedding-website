@@ -33,13 +33,17 @@ const dayEvents: Array<RunningOrderItem> = [
     time: "18:30:00",
   },
   {
-    name: "Dancing",
+    name: "Cake\xa0Cutting",
     time: "20:00:00",
   },
   {
-    name: "Cake\xa0Cutting and\xa0Pizza",
-    time: "21:00:00",
+    name: "First\xa0Dance",
+    time: "20:15:00",
   },
+  {
+    name: "Pizzas",
+    time: "21:15:00",
+  }
 ];
 
 const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
