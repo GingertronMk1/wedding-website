@@ -43,7 +43,7 @@ const dayEvents: Array<RunningOrderItem> = [
   {
     name: "Pizzas",
     time: "21:15:00",
-  }
+  },
 ];
 
 const computedDayEvents = computed<Array<ComputedRunningOrderItem>>(() => {
